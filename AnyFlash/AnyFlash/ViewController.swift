@@ -41,10 +41,15 @@ class ViewController: UIViewController {
                 if user == nil {
                     Util.showAlert(sself,"email and password combination does not exist")
                 } else {
-                   performSegue(withIdentifier: "signInDone", sender: sself)
+                   self.performSeg()
                 }
             }
         }
+    }
+    
+    
+    func performSeg() {
+        performSegue(withIdentifier: "signInDone", sender: self)
     }
 }
 
