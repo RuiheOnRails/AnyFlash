@@ -1,0 +1,6 @@
+framework module Pods_AnyFlash {
+  umbrella header "Pods-AnyFlash-umbrella.h"
+
+  export *
+  module * { export * }
+}

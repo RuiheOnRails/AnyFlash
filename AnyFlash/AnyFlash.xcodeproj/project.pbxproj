@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B97729583C64057133A3C6F4 /* Pods_AnyFlash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 014973335729C7FE09B56546 /* Pods_AnyFlash.framework */; };
 		D0D95DAF20429E1A00EFD997 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D95DAE20429E1A00EFD997 /* AppDelegate.swift */; };
 		D0D95DB120429E1A00EFD997 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D95DB020429E1A00EFD997 /* ViewController.swift */; };
 		D0D95DB420429E1A00EFD997 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D95DB220429E1A00EFD997 /* Main.storyboard */; };
 		D0D95DB620429E1A00EFD997 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0D95DB520429E1A00EFD997 /* Assets.xcassets */; };
 		D0D95DB920429E1A00EFD997 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D95DB720429E1A00EFD997 /* LaunchScreen.storyboard */; };
+		F8AA15E320536DFA000FC593 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8AA15E220536DFA000FC593 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		014973335729C7FE09B56546 /* Pods_AnyFlash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnyFlash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DC4EE099110D408D6F9A1F8 /* Pods-AnyFlash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyFlash.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnyFlash/Pods-AnyFlash.release.xcconfig"; sourceTree = "<group>"; };
+		5BFE2C1E1F3D0E6A3D5B68D8 /* Pods-AnyFlash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyFlash.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AnyFlash/Pods-AnyFlash.debug.xcconfig"; sourceTree = "<group>"; };
 		D0D95DAB20429E1A00EFD997 /* AnyFlash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnyFlash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0D95DAE20429E1A00EFD997 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0D95DB020429E1A00EFD997 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +27,7 @@
 		D0D95DB520429E1A00EFD997 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0D95DB820429E1A00EFD997 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0D95DBA20429E1A00EFD997 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8AA15E220536DFA000FC593 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B97729583C64057133A3C6F4 /* Pods_AnyFlash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D8EDFEFD20FED861F2A03C0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				014973335729C7FE09B56546 /* Pods_AnyFlash.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		86BA1A7A300D6A38A6166BEC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5BFE2C1E1F3D0E6A3D5B68D8 /* Pods-AnyFlash.debug.xcconfig */,
+				1DC4EE099110D408D6F9A1F8 /* Pods-AnyFlash.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D0D95DA220429E1A00EFD997 = {
 			isa = PBXGroup;
 			children = (
 				D0D95DAD20429E1A00EFD997 /* AnyFlash */,
 				D0D95DAC20429E1A00EFD997 /* Products */,
+				86BA1A7A300D6A38A6166BEC /* Pods */,
+				6D8EDFEFD20FED861F2A03C0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +80,7 @@
 		D0D95DAD20429E1A00EFD997 /* AnyFlash */ = {
 			isa = PBXGroup;
 			children = (
+				F8AA15E220536DFA000FC593 /* GoogleService-Info.plist */,
 				D0D95DAE20429E1A00EFD997 /* AppDelegate.swift */,
 				D0D95DB020429E1A00EFD997 /* ViewController.swift */,
 				D0D95DB220429E1A00EFD997 /* Main.storyboard */,
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0D95DBD20429E1A00EFD997 /* Build configuration list for PBXNativeTarget "AnyFlash" */;
 			buildPhases = (
+				426B0D55C62282AC1A110CEF /* [CP] Check Pods Manifest.lock */,
 				D0D95DA720429E1A00EFD997 /* Sources */,
 				D0D95DA820429E1A00EFD997 /* Frameworks */,
 				D0D95DA920429E1A00EFD997 /* Resources */,
+				3D21928D36732800ED0574E9 /* [CP] Embed Pods Frameworks */,
+				3A90A642D9715C8D854C02CB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -124,12 +154,69 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0D95DB920429E1A00EFD997 /* LaunchScreen.storyboard in Resources */,
+				F8AA15E320536DFA000FC593 /* GoogleService-Info.plist in Resources */,
 				D0D95DB620429E1A00EFD997 /* Assets.xcassets in Resources */,
 				D0D95DB420429E1A00EFD997 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3A90A642D9715C8D854C02CB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AnyFlash/Pods-AnyFlash-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3D21928D36732800ED0574E9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AnyFlash/Pods-AnyFlash-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AnyFlash/Pods-AnyFlash-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		426B0D55C62282AC1A110CEF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AnyFlash-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D0D95DA720429E1A00EFD997 /* Sources */ = {
@@ -272,6 +359,7 @@
 		};
 		D0D95DBE20429E1A00EFD997 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BFE2C1E1F3D0E6A3D5B68D8 /* Pods-AnyFlash.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -286,6 +374,7 @@
 		};
 		D0D95DBF20429E1A00EFD997 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1DC4EE099110D408D6F9A1F8 /* Pods-AnyFlash.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
