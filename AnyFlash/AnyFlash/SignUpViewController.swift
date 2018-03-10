@@ -33,15 +33,15 @@ class SignUpViewController: UIViewController {
     @IBAction func handleSignUp(_ sender: UIButton) {
         
         if((emailTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)!){
-            showAlert("Please enter a email and password")
-        }else if (!isValidEmail(emailTextField.text!)){
-            showAlert("Invalid Email")
+            Util.showAlert(self,"Please enter a email and password")
+        }else if (!Util.isValidEmail(emailTextField.text!)){
+            Util.showAlert(self,"Invalid Email")
             emailTextField.becomeFirstResponder()
         }else if(confirmTextField.text! != passwordTextField.text!){
-            showAlert("passwords mismatch")
+            Util.showAlert(self,"passwords mismatch")
             passwordTextField.becomeFirstResponder()
         }else if((passwordTextField.text?.count) ?? 0 < 6){
-            showAlert("password must be 6 characters or more")
+            Util.showAlert(self,"password must be 6 characters or more")
         }else{
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!){
                 (user, error) in
@@ -53,18 +53,5 @@ class SignUpViewController: UIViewController {
             }
             performSegue(withIdentifier: "signUpDone", sender: self)
         }
-    }
-
-    func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"+"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\"+"x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-"+"z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5"+"]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-"+"9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21"+"-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
-        
-        let emailTest = NSPredicate(format:"SELF MATCHES[c] %@", emailRegEx)
-        return emailTest.evaluate(with: email)
-    }
-    
-    func showAlert(_ msg: String){
-        let alert = UIAlertController(title: "Sign Up Error", message: msg, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        self.present(alert, animated: true)
     }
 }
