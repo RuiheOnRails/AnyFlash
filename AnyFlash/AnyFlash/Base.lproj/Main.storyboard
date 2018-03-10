@@ -236,7 +236,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BEa-NP-GXw">
-                                                    <rect key="frame" x="244" y="6" width="34" height="30"/>
+                                                    <rect key="frame" x="338" y="6" width="34" height="30"/>
                                                     <state key="normal" title="View"/>
                                                     <connections>
                                                         <segue destination="I2I-qO-Tha" kind="show" id="NIR-nf-yeS"/>
@@ -313,7 +313,7 @@
                                 <rect key="frame" x="20" y="101" width="374" height="585"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="VyL-ym-Iil">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="VyL-ym-Iil">
                                         <rect key="frame" x="0.0" y="28" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VyL-ym-Iil" id="htD-Ht-vuY">
@@ -752,6 +752,6 @@
         <segue reference="pQb-SA-07o"/>
         <segue reference="9YK-Yc-sa2"/>
         <segue reference="RnS-FF-DUy"/>
-        <segue reference="ehd-2p-M6u"/>
+        <segue reference="JSM-LH-n4f"/>
     </inferredMetricsTieBreakers>
 </document>

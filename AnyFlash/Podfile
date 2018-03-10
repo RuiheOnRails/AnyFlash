@@ -8,5 +8,5 @@ target 'AnyFlash' do
   # Pods for AnyFlash
   pod 'Firebase/Core'
   pod 'Firebase/Database'
-
+  pod 'Firebase/Auth'
 end
