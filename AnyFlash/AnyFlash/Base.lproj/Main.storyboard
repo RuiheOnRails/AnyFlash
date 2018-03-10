@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="K1H-dW-Zyp">
             <objects>
-                <viewController id="rfe-9e-kTS" sceneMemberID="viewController">
+                <viewController id="rfe-9e-kTS" customClass="SignUpViewController" customModule="AnyFlash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nsy-yY-6jl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,6 +26,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Sign me up!"/>
+                                <connections>
+                                    <action selector="handleSignUp:" destination="rfe-9e-kTS" eventType="touchUpInside" id="R7W-e2-uFN"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8M-4h-HyJ">
                                 <rect key="frame" x="20" y="20" width="36" height="32"/>
@@ -64,11 +67,10 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NHn-Gh-yzr">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NHn-Gh-yzr">
                                                 <rect key="frame" x="157" y="0.0" width="157" height="32.333333333333336"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -85,7 +87,7 @@
                                                 <rect key="frame" x="157" y="0.0" width="157" height="32.333333333333336"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -108,6 +110,9 @@
                         <viewLayoutGuide key="safeArea" id="PcY-CK-Unn"/>
                     </view>
                     <connections>
+                        <outlet property="confirmTextField" destination="T0f-cn-i6W" id="487-tc-RLj"/>
+                        <outlet property="emailTextField" destination="2cq-kh-CIB" id="zuD-o4-q64"/>
+                        <outlet property="passwordTextField" destination="NHn-Gh-yzr" id="M3g-SI-edi"/>
                         <segue destination="8It-em-ND5" kind="show" identifier="signUpDone" id="ehd-2p-M6u"/>
                     </connections>
                 </viewController>
@@ -758,6 +763,6 @@
         <segue reference="pQb-SA-07o"/>
         <segue reference="9YK-Yc-sa2"/>
         <segue reference="RnS-FF-DUy"/>
-        <segue reference="JSM-LH-n4f"/>
+        <segue reference="ehd-2p-M6u"/>
     </inferredMetricsTieBreakers>
 </document>
