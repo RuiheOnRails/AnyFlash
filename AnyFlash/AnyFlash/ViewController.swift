@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         ref = Database.database().reference()
-        self.ref.child("test2").setValue(["thisComesFromApp": "valueHere!"])
+        self.ref.child("test4").setValue(["thisComesFromApp": "valueHere!"])
     }
 
     override func didReceiveMemoryWarning() {
