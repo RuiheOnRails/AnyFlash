@@ -5,7 +5,7 @@ this is how you set up the project when you first cloned it
 1. cd into anyflash
 2. use the command:
    sudo gem install cocoapods
-3. use the command
+3. use the command:
    pod install
 4. use the commend:
    open AnyFlash.xcworkspace
