@@ -162,7 +162,7 @@
                                         <rect key="frame" x="92.666666666666643" y="0.0" width="207.33333333333337" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -172,6 +172,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ih-yj-djX">
                                 <rect key="frame" x="183.66666666666666" y="296" width="47" height="30"/>
                                 <state key="normal" title="Sign In"/>
+                                <connections>
+                                    <action selector="signInBTNClicked:" destination="2Sv-3N-gEb" eventType="touchUpInside" id="zTe-iR-Zdl"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1C-l4-Vr5">
                                 <rect key="frame" x="180" y="334" width="55" height="30"/>
@@ -197,6 +200,9 @@
                         <viewLayoutGuide key="safeArea" id="f6l-dj-W1B"/>
                     </view>
                     <connections>
+                        <outlet property="emailBox" destination="p3L-LR-0wD" id="vZu-na-AYp"/>
+                        <outlet property="passwordBox" destination="a2W-2G-EkA" id="axg-ZG-Yjd"/>
+                        <outlet property="signInBTN" destination="7Ih-yj-djX" id="sUj-Jm-vNF"/>
                         <segue destination="8It-em-ND5" kind="show" identifier="signInDone" id="JSM-LH-n4f"/>
                     </connections>
                 </viewController>
