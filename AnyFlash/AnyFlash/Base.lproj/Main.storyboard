@@ -297,19 +297,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9iv-P7-bdN" id="DDm-za-Ba7">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BEa-NP-GXw">
-                                                    <rect key="frame" x="660" y="6" width="34" height="30"/>
-                                                    <state key="normal" title="View"/>
-                                                    <connections>
-                                                        <segue destination="I2I-qO-Tha" kind="show" id="NIR-nf-yeS"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="BEa-NP-GXw" firstAttribute="centerY" secondItem="DDm-za-Ba7" secondAttribute="centerY" id="WPX-qE-iqC"/>
-                                                <constraint firstAttribute="trailing" secondItem="BEa-NP-GXw" secondAttribute="trailing" constant="2" id="nJ2-10-JZN"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -333,13 +320,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Back"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5dv-E4-2q3">
-                                <rect key="frame" x="299" y="58" width="95" height="30"/>
-                                <state key="normal" title="(Next Screen)"/>
-                                <connections>
-                                    <segue destination="I2I-qO-Tha" kind="show" id="RnS-FF-DUy"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -352,9 +332,7 @@
                             <constraint firstItem="FPe-GY-Spy" firstAttribute="top" secondItem="8Bs-ku-gQW" secondAttribute="bottom" constant="10" id="Q6D-0z-BMW"/>
                             <constraint firstItem="HdS-ZU-g6M" firstAttribute="top" secondItem="Njf-e6-SwL" secondAttribute="top" id="VsK-lo-6o5"/>
                             <constraint firstItem="gPs-h5-ugQ" firstAttribute="centerX" secondItem="ni0-4K-pQm" secondAttribute="centerX" id="cI8-cZ-Ufq"/>
-                            <constraint firstItem="5dv-E4-2q3" firstAttribute="top" secondItem="HdS-ZU-g6M" secondAttribute="bottom" constant="10" id="doB-2l-SnP"/>
                             <constraint firstItem="FPe-GY-Spy" firstAttribute="leading" secondItem="Njf-e6-SwL" secondAttribute="leading" constant="20" id="irg-2f-Rqt"/>
-                            <constraint firstItem="Njf-e6-SwL" firstAttribute="trailing" secondItem="5dv-E4-2q3" secondAttribute="trailing" constant="20" id="kgO-4M-eT2"/>
                             <constraint firstItem="PIm-QQ-b53" firstAttribute="leading" secondItem="Njf-e6-SwL" secondAttribute="leading" constant="20" id="lja-Ce-BKv"/>
                             <constraint firstItem="Njf-e6-SwL" firstAttribute="bottom" secondItem="PIm-QQ-b53" secondAttribute="bottom" constant="20" id="zF4-9d-WGl"/>
                         </constraints>
@@ -362,16 +340,17 @@
                     </view>
                     <connections>
                         <outlet property="table" destination="PIm-QQ-b53" id="kyt-5o-ctw"/>
+                        <segue destination="I2I-qO-Tha" kind="show" identifier="categorySelected" id="Ocz-a0-jk1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jod-BX-FD9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1710" y="132.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Cards List View Controller-->
         <scene sceneID="9h5-gT-b2i">
             <objects>
-                <viewController id="I2I-qO-Tha" sceneMemberID="viewController">
+                <viewController id="I2I-qO-Tha" customClass="CardsListViewController" customModule="AnyFlash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IAA-1G-GCs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -434,7 +413,7 @@
                                 <rect key="frame" x="20" y="20" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <segue destination="8It-em-ND5" kind="show" id="Ibp-It-g9k"/>
+                                    <segue destination="8It-em-ND5" kind="show" identifier="cardListToCourses" id="Ibp-It-g9k"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4P-I6-nFQ">
@@ -465,6 +444,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0tq-lO-7rp"/>
                     </view>
+                    <connections>
+                        <outlet property="courseNameLabel" destination="Igy-sy-TrT" id="y31-kk-rZy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d2y-zx-3c7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -535,7 +517,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Krj-U5-8Bs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3410.625" y="132.5"/>
+            <point key="canvasLocation" x="3533" y="106"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="UQ6-xa-bUn">
@@ -818,7 +800,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="pQb-SA-07o"/>
         <segue reference="9YK-Yc-sa2"/>
-        <segue reference="NIR-nf-yeS"/>
-        <segue reference="WgY-fj-vrl"/>
+        <segue reference="Ocz-a0-jk1"/>
+        <segue reference="Ibp-It-g9k"/>
     </inferredMetricsTieBreakers>
 </document>

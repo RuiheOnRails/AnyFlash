@@ -17,25 +17,29 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var table: UITableView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // count -1 because there will be placeholder
         return flashCardData == nil ? 0 : flashCardData.count-1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
-        let obj = flashCardData.object(forKey: String(indexPath.row)) as! NSDictionary
-        let key = obj.allKeys
-        cell.textLabel?.text = key[0] as? String
+        
+        let keys = flashCardData.allKeys
+        let label = keys[indexPath.row] as? String
+        cell.textLabel?.text = label == "newUserPlaceHolderKey" ? keys[keys.count-1] as? String : label
         tableView.tableFooterView = UIView()
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        print(indexPath.row)
+        self.category = flashCardData.allKeys[indexPath.row] as! String
+        if self.category == "newUserPlaceHolderKey" {
+            self.category = flashCardData.allKeys.last as! String
+        }
+        performSegue(withIdentifier: "categorySelected", sender: self)
     }
     
-    
+    var category = ""
     var uid = ""
     var ref: DatabaseReference! = Database.database().reference()
     var flashCardData: NSDictionary!
@@ -66,6 +70,10 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
         if segue.identifier == "add" {
             let destination = segue.destination as! AddCatViewController
             destination.uid = self.uid
+        } else if segue.identifier == "categorySelected" {
+            let destination = segue.destination as! CardsListViewController
+            destination.uid = self.uid
+            destination.category = self.category
         }
     }
 }

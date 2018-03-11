@@ -44,7 +44,7 @@ class AddCatViewController: UIViewController {
         if (textField.text?.isEmpty)! {
             Util.showAlert(self, "category cannot have empty name")
         } else {
-            self.ref.child("users").child(self.uid).child(String(self.flashCardData.count-1)).child(textField.text!).setValue(["front":"back"])
+            self.ref.child("users").child(self.uid).child(textField.text!).setValue(["cardPlaceHolderKey" : "cardValue"])
         }
         performSegue(withIdentifier: "addedCategory", sender: self)
     }
