@@ -10,6 +10,7 @@ import UIKit
 
 import Firebase
 import FirebaseAuth
+import FirebaseDatabase
 
 class SignUpViewController: UIViewController {
     
@@ -17,12 +18,16 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var confirmTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    var ref: DatabaseReference!
+    
+    var uid = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
         // Do any additional setup after loading the view.
+        ref = Database.database().reference()
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,8 +55,17 @@ class SignUpViewController: UIViewController {
                 }else{
                     print(user?.uid ?? "no user id")
                 }
+                self.uid = (user?.uid)!
+                self.ref.child("users").child(self.uid).setValue(["newUser": "placeHolderValue"])
+                self.performSegue(withIdentifier: "signUpDone", sender: self)
             }
-            performSegue(withIdentifier: "signUpDone", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "signUpDone" {
+            let destination = segue.destination as! CoursesViewController
+            destination.uid = self.uid
         }
     }
 }

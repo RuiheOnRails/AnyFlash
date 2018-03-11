@@ -13,7 +13,7 @@ import FirebaseAuth
 
 class ViewController: UIViewController {
     
-    
+    var uid = ""
     @IBOutlet weak var passwordBox: UITextField!
     @IBOutlet weak var emailBox: UITextField!
     @IBOutlet weak var signInBTN: UIButton!
@@ -41,7 +41,8 @@ class ViewController: UIViewController {
                 if user == nil {
                     Util.showAlert(sself,"email and password combination does not exist")
                 } else {
-                   self.performSeg()
+                    self.uid = (user?.uid)!
+                    self.performSeg()
                 }
             }
         }
@@ -50,6 +51,13 @@ class ViewController: UIViewController {
     
     func performSeg() {
         performSegue(withIdentifier: "signInDone", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "signInDone" {
+            let destination = segue.destination as! CoursesViewController
+            destination.uid = self.uid
+        }
     }
 }
 
