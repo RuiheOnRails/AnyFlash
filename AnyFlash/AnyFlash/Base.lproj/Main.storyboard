@@ -421,11 +421,11 @@
                                     <segue destination="8It-em-ND5" kind="show" identifier="cardListToCourses" id="Ibp-It-g9k"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4P-I6-nFQ">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4P-I6-nFQ">
                                 <rect key="frame" x="191" y="696" width="32" height="30"/>
                                 <state key="normal" title="Quiz"/>
                                 <connections>
-                                    <segue destination="ncg-zp-QeC" kind="show" id="9YK-Yc-sa2"/>
+                                    <action selector="quizPressed:" destination="I2I-qO-Tha" eventType="touchUpInside" id="ffm-pt-D1A"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -451,17 +451,19 @@
                     </view>
                     <connections>
                         <outlet property="courseNameLabel" destination="Igy-sy-TrT" id="y31-kk-rZy"/>
+                        <outlet property="quizButton" destination="s4P-I6-nFQ" id="FuN-3s-rNX"/>
                         <outlet property="table" destination="j9n-0e-wdm" id="sBP-iL-sAs"/>
+                        <segue destination="ncg-zp-QeC" kind="show" identifier="toQuizView" id="pgQ-zb-5ti"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d2y-zx-3c7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2907" y="106"/>
         </scene>
-        <!--View Controller-->
+        <!--Quiz Front View Controller-->
         <scene sceneID="iSb-c2-Sga">
             <objects>
-                <viewController id="ncg-zp-QeC" sceneMemberID="viewController">
+                <viewController id="ncg-zp-QeC" customClass="QuizFrontViewController" customModule="AnyFlash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6iZ-5G-CbB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -474,11 +476,11 @@
                                 <rect key="frame" x="16" y="20" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <segue destination="I2I-qO-Tha" kind="show" id="fm4-vH-TJD"/>
+                                    <segue destination="I2I-qO-Tha" kind="show" identifier="backFromQuizFront" id="fm4-vH-TJD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AnyFlash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cec-QS-ifG">
-                                <rect key="frame" x="168.33333333333334" y="20" width="77.333333333333343" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="AnyFlash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cec-QS-ifG">
+                                <rect key="frame" x="168" y="20" width="94" height="23"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -497,13 +499,21 @@
                                 <rect key="frame" x="192" y="432" width="30" height="30"/>
                                 <state key="normal" title="Flip"/>
                                 <connections>
-                                    <segue destination="9mc-4u-vzR" kind="show" id="P5a-RL-vYv"/>
+                                    <segue destination="9mc-4u-vzR" kind="show" identifier="flip" id="P5a-RL-vYv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYf-U6-EY3">
+                                <rect key="frame" x="173" y="470" width="69" height="30"/>
+                                <state key="normal" title="Next Card"/>
+                                <connections>
+                                    <action selector="nextCardPressed:" destination="ncg-zp-QeC" eventType="touchUpInside" id="AYx-Lq-SAQ"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="yLU-mG-CTv" firstAttribute="centerX" secondItem="6iZ-5G-CbB" secondAttribute="centerX" id="59Y-dO-gBm"/>
+                            <constraint firstItem="eYf-U6-EY3" firstAttribute="centerX" secondItem="Hx1-2g-fOi" secondAttribute="centerX" id="5KR-g1-HzU"/>
                             <constraint firstItem="iBF-eX-CWh" firstAttribute="top" secondItem="nYF-ID-4RZ" secondAttribute="bottom" constant="40" id="GRT-D0-VXq"/>
                             <constraint firstItem="iBF-eX-CWh" firstAttribute="centerY" secondItem="6iZ-5G-CbB" secondAttribute="centerY" id="KfM-7W-5Ja"/>
                             <constraint firstItem="iBF-eX-CWh" firstAttribute="centerX" secondItem="6iZ-5G-CbB" secondAttribute="centerX" id="Ov3-Hb-vOT"/>
@@ -512,6 +522,7 @@
                             <constraint firstItem="uBq-fV-JJ9" firstAttribute="leading" secondItem="nYF-ID-4RZ" secondAttribute="trailing" constant="35" id="XSg-g8-Vq7"/>
                             <constraint firstItem="qNV-k2-EFJ" firstAttribute="leading" secondItem="Hx1-2g-fOi" secondAttribute="leading" constant="16" id="epb-ib-k8y"/>
                             <constraint firstItem="qNV-k2-EFJ" firstAttribute="top" secondItem="Hx1-2g-fOi" secondAttribute="top" id="i6C-Zw-O6z"/>
+                            <constraint firstItem="eYf-U6-EY3" firstAttribute="top" secondItem="yLU-mG-CTv" secondAttribute="bottom" constant="8" id="mNI-pv-b9j"/>
                             <constraint firstItem="Cec-QS-ifG" firstAttribute="top" secondItem="6iZ-5G-CbB" secondAttribute="top" constant="20" id="nYI-Zk-sO1"/>
                             <constraint firstItem="Cec-QS-ifG" firstAttribute="centerX" secondItem="6iZ-5G-CbB" secondAttribute="centerX" id="ohg-1q-Ung"/>
                             <constraint firstItem="yLU-mG-CTv" firstAttribute="top" secondItem="iBF-eX-CWh" secondAttribute="bottom" constant="50" id="uoC-fN-JpO"/>
@@ -520,15 +531,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hx1-2g-fOi"/>
                     </view>
+                    <connections>
+                        <outlet property="cardFrontLabel" destination="iBF-eX-CWh" id="unc-ep-ZFE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Krj-U5-8Bs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3533" y="106"/>
+            <point key="canvasLocation" x="3860.8695652173915" y="105.97826086956522"/>
         </scene>
-        <!--View Controller-->
+        <!--Quiz Back View Controller-->
         <scene sceneID="UQ6-xa-bUn">
             <objects>
-                <viewController id="9mc-4u-vzR" sceneMemberID="viewController">
+                <viewController id="9mc-4u-vzR" customClass="QuizBackViewController" customModule="AnyFlash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fmt-9E-YJ9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -543,7 +557,7 @@
                                 <rect key="frame" x="16" y="20" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <segue destination="I2I-qO-Tha" kind="show" id="SZI-TM-tlQ"/>
+                                    <segue destination="I2I-qO-Tha" kind="show" identifier="backFromQuizBack" id="SZI-TM-tlQ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card back here" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1o-7p-tYy">
@@ -556,7 +570,7 @@
                                 <rect key="frame" x="192" y="432" width="30" height="30"/>
                                 <state key="normal" title="Flip"/>
                                 <connections>
-                                    <segue destination="ncg-zp-QeC" kind="show" id="psf-id-Ffc"/>
+                                    <segue destination="ncg-zp-QeC" kind="show" identifier="flipBack" id="psf-id-Ffc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EiB-dB-DhK">
@@ -566,6 +580,13 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AI3-0X-gRH">
                                 <rect key="frame" x="131" y="284" width="56" height="30"/>
                                 <state key="normal" title="In Order"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ylx-cT-TfD">
+                                <rect key="frame" x="173" y="470" width="69" height="30"/>
+                                <state key="normal" title="Next Card"/>
+                                <connections>
+                                    <segue destination="ncg-zp-QeC" kind="show" identifier="backNextCard" id="lcf-RG-yX7"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -578,19 +599,24 @@
                             <constraint firstItem="y1o-7p-tYy" firstAttribute="centerY" secondItem="fmt-9E-YJ9" secondAttribute="centerY" id="CfE-sq-YVm"/>
                             <constraint firstItem="ijA-gz-2p5" firstAttribute="top" secondItem="y1o-7p-tYy" secondAttribute="bottom" constant="50" id="FeV-xw-by1"/>
                             <constraint firstItem="rxx-Hk-EXz" firstAttribute="top" secondItem="rmD-Fu-RNZ" secondAttribute="top" id="IEc-4q-3a9"/>
+                            <constraint firstItem="Ylx-cT-TfD" firstAttribute="centerX" secondItem="rmD-Fu-RNZ" secondAttribute="centerX" id="L08-c1-jyv"/>
                             <constraint firstItem="NrQ-Y5-LOh" firstAttribute="centerX" secondItem="fmt-9E-YJ9" secondAttribute="centerX" id="Txs-Rm-r8H"/>
                             <constraint firstItem="NrQ-Y5-LOh" firstAttribute="top" secondItem="fmt-9E-YJ9" secondAttribute="top" constant="20" id="Vrs-Az-YBI"/>
                             <constraint firstItem="rmD-Fu-RNZ" firstAttribute="trailing" secondItem="y1o-7p-tYy" secondAttribute="trailing" constant="20" id="YrH-68-AUN"/>
+                            <constraint firstItem="Ylx-cT-TfD" firstAttribute="top" secondItem="ijA-gz-2p5" secondAttribute="bottom" constant="8" id="dOj-F8-Eac"/>
                             <constraint firstItem="EiB-dB-DhK" firstAttribute="leading" secondItem="rmD-Fu-RNZ" secondAttribute="leading" constant="20" id="fVl-h4-P2g"/>
                             <constraint firstItem="ijA-gz-2p5" firstAttribute="centerX" secondItem="fmt-9E-YJ9" secondAttribute="centerX" id="qgU-4e-ssR"/>
                             <constraint firstItem="y1o-7p-tYy" firstAttribute="top" secondItem="AI3-0X-gRH" secondAttribute="bottom" constant="40" id="tQw-n6-QJB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rmD-Fu-RNZ"/>
                     </view>
+                    <connections>
+                        <outlet property="cardBackLabel" destination="y1o-7p-tYy" id="gF7-Wb-eDU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gKw-yc-zlY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4311" y="133"/>
+            <point key="canvasLocation" x="4628" y="85"/>
         </scene>
         <!--Add Front View Controller-->
         <scene sceneID="OwK-bo-mdN">
@@ -694,7 +720,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Add"/>
                                 <connections>
-                                    <segue destination="I2I-qO-Tha" kind="show" id="3my-y7-8cf"/>
+                                    <action selector="addBackPressed:" destination="AGo-Ai-zs8" eventType="touchUpInside" id="e6x-q3-xgL"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's on the back side of your card?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eo0-3d-55q">
@@ -727,6 +753,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="v5e-3q-ufP"/>
                     </view>
+                    <connections>
+                        <outlet property="textField" destination="M1t-at-MX3" id="BoG-Xy-f4I"/>
+                        <segue destination="I2I-qO-Tha" kind="show" identifier="cardAdded" id="8RX-dz-Vbe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="La1-jJ-ZJB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -808,10 +838,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4D9-pc-gmp"/>
-        <segue reference="AV9-Yy-ckS"/>
-        <segue reference="9YK-Yc-sa2"/>
-        <segue reference="Dph-Lf-Kl8"/>
+        <segue reference="pQb-SA-07o"/>
+        <segue reference="pgQ-zb-5ti"/>
+        <segue reference="fm4-vH-TJD"/>
         <segue reference="Ibp-It-g9k"/>
     </inferredMetricsTieBreakers>
 </document>

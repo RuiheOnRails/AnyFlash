@@ -32,6 +32,7 @@ class AddFrontViewController: UIViewController {
         if (testFiled.text?.isEmpty)! {
             Util.showAlert(self, "please enter a front for your card")
         } else {
+            self.front = testFiled.text!
             performSegue(withIdentifier: "continue", sender: self)
         }
     }

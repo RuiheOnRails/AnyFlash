@@ -21,7 +21,7 @@ class CardsListViewController: UIViewController, UITableViewDataSource, UITableV
         let keys = flashCardData.allKeys
         let label = keys[indexPath.row] as? String
         cell.textLabel?.text = label == "cardPlaceHolderKey" ? keys[keys.count-1] as? String : label
-        cell.detailTextLabel?.text = flashCardData.object(forKey: cell.textLabel?.text) as! String
+        cell.detailTextLabel?.text = flashCardData.object(forKey: cell.textLabel?.text ?? "this hsould not show up") as? String
         tableView.tableFooterView = UIView()
         
         return cell
@@ -35,6 +35,7 @@ class CardsListViewController: UIViewController, UITableViewDataSource, UITableV
     
 
     @IBOutlet weak var courseNameLabel: UILabel!
+    @IBOutlet weak var quizButton: UIButton!
     
     var ref: DatabaseReference! = Database.database().reference()
     
@@ -42,9 +43,6 @@ class CardsListViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        print(self.uid)
-        print(self.category)
         
         courseNameLabel.text = self.category
         
@@ -56,6 +54,9 @@ class CardsListViewController: UIViewController, UITableViewDataSource, UITableV
         ref.child("users").child(self.uid).child(category).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             self.flashCardData = (snapshot.value as? NSDictionary)!
+            if self.flashCardData.count > 1 {
+                self.quizButton.isEnabled = true
+            }
             self.table.reloadData()
         }) { (error) in
             print(error.localizedDescription)
@@ -67,6 +68,12 @@ class CardsListViewController: UIViewController, UITableViewDataSource, UITableV
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
+    @IBAction func quizPressed(_ sender: Any) {
+        performSegue(withIdentifier: "toQuizView", sender: self)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "cardListToCourses") {
             let destination = segue.destination as! CoursesViewController
@@ -75,6 +82,11 @@ class CardsListViewController: UIViewController, UITableViewDataSource, UITableV
             let destination = segue.destination as! AddFrontViewController
             destination.uid = self.uid
             destination.category = self.category
+        } else if segue.identifier == "toQuizView" {
+            let destination = segue.destination as! QuizFrontViewController
+            destination.uid = self.uid
+            destination.category = self.category
+            destination.flashCardData = self.flashCardData
         }
     }
 }
