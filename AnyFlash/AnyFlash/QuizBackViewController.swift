@@ -14,6 +14,7 @@ class QuizBackViewController: UIViewController {
     var uid = ""
     var flashCardData: NSDictionary!
     var currentIndex = 0
+    @IBOutlet weak var numOutaNum: UILabel!
     
     @IBOutlet weak var cardBackLabel: UILabel!
     
@@ -22,7 +23,21 @@ class QuizBackViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         let values = flashCardData.allValues
-        self.cardBackLabel.text = values[currentIndex] as? String
+        var text = ""
+        if self.currentIndex == values.count-1 {
+            self.currentIndex = 0
+            text = (values[currentIndex] as? String)!
+        } else {
+            text = (values[currentIndex] as? String)!
+        }
+        
+        if text != "cardValue" {
+            self.cardBackLabel.text = values[currentIndex] as? String
+        } else {
+            self.cardBackLabel.text = values.last as? String
+        }
+        
+        numOutaNum.text = "\(self.currentIndex+1)/\(self.flashCardData.count-1)"
 
     }
 

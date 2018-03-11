@@ -14,6 +14,7 @@ class QuizFrontViewController: UIViewController {
     var category = ""
     var flashCardData: NSDictionary!
     var currentIndex = 0
+    @IBOutlet weak var numOutaNum: UILabel!
     
     @IBOutlet weak var cardFrontLabel: UILabel!
     
@@ -22,12 +23,21 @@ class QuizFrontViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         let keys = flashCardData.allKeys
-        if self.currentIndex == keys.count {
+        var text = ""
+        if self.currentIndex == keys.count-1 {
             self.currentIndex = 0
+            text = (keys[currentIndex] as? String)!
+        } else {
+            text = (keys[currentIndex] as? String)!
+        }
+        
+        if text != "cardPlaceHolderKey" {
             self.cardFrontLabel.text = keys[currentIndex] as? String
         } else {
-            self.cardFrontLabel.text = keys[currentIndex] as? String
+            self.cardFrontLabel.text = keys.last as? String
         }
+        
+        numOutaNum.text = "\(self.currentIndex+1)/\(self.flashCardData.count-1)"
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,12 +48,20 @@ class QuizFrontViewController: UIViewController {
     @IBAction func nextCardPressed(_ sender: Any) {
         let keys = flashCardData.allKeys
         self.currentIndex+=1
-        if self.currentIndex == keys.count {
+        var text = ""
+        if self.currentIndex == keys.count-1 {
             self.currentIndex = 0
+            text = (keys[currentIndex] as? String)!
+        } else {
+            text = (keys[currentIndex] as? String)!
+        }
+        
+        if text != "cardPlaceHolderKey" {
             self.cardFrontLabel.text = keys[currentIndex] as? String
         } else {
-            self.cardFrontLabel.text = keys[currentIndex] as? String
+            self.cardFrontLabel.text = keys.last as? String
         }
+        numOutaNum.text = "\(self.currentIndex+1)/\(self.flashCardData.count-1)"
     }
     
 
