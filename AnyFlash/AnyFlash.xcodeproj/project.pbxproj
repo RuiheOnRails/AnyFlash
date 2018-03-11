@@ -18,6 +18,8 @@
 		F8097E7620549FB300377CD7 /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8097E7520549FB300377CD7 /* CoursesViewController.swift */; };
 		F8097E782054B7F600377CD7 /* AddCatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8097E772054B7F600377CD7 /* AddCatViewController.swift */; };
 		F8097E7A2054CA7C00377CD7 /* CardsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8097E792054CA7C00377CD7 /* CardsListViewController.swift */; };
+		F8097E7C2054E45B00377CD7 /* AddFrontViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8097E7B2054E45B00377CD7 /* AddFrontViewController.swift */; };
+		F8097E7E2054E67100377CD7 /* AddBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8097E7D2054E67100377CD7 /* AddBackViewController.swift */; };
 		F8AA15E320536DFA000FC593 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8AA15E220536DFA000FC593 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,8 @@
 		F8097E7520549FB300377CD7 /* CoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
 		F8097E772054B7F600377CD7 /* AddCatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCatViewController.swift; sourceTree = "<group>"; };
 		F8097E792054CA7C00377CD7 /* CardsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsListViewController.swift; sourceTree = "<group>"; };
+		F8097E7B2054E45B00377CD7 /* AddFrontViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFrontViewController.swift; sourceTree = "<group>"; };
+		F8097E7D2054E67100377CD7 /* AddBackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBackViewController.swift; sourceTree = "<group>"; };
 		F8AA15E220536DFA000FC593 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +98,8 @@
 				D0D95DAE20429E1A00EFD997 /* AppDelegate.swift */,
 				D0D95DB020429E1A00EFD997 /* ViewController.swift */,
 				D0D95DB220429E1A00EFD997 /* Main.storyboard */,
+				F8097E7B2054E45B00377CD7 /* AddFrontViewController.swift */,
+				F8097E7D2054E67100377CD7 /* AddBackViewController.swift */,
 				D0486F062053954E002659D2 /* SignUpViewController.swift */,
 				F8097E7520549FB300377CD7 /* CoursesViewController.swift */,
 				F8097E772054B7F600377CD7 /* AddCatViewController.swift */,
@@ -242,11 +248,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8097E7C2054E45B00377CD7 /* AddFrontViewController.swift in Sources */,
 				D0486F072053954E002659D2 /* SignUpViewController.swift in Sources */,
 				F8097E7A2054CA7C00377CD7 /* CardsListViewController.swift in Sources */,
 				D0D95DB120429E1A00EFD997 /* ViewController.swift in Sources */,
 				D0D95DAF20429E1A00EFD997 /* AppDelegate.swift in Sources */,
 				F8097E782054B7F600377CD7 /* AddCatViewController.swift in Sources */,
+				F8097E7E2054E67100377CD7 /* AddBackViewController.swift in Sources */,
 				D0486F092053A1EB002659D2 /* util.swift in Sources */,
 				F8097E7620549FB300377CD7 /* CoursesViewController.swift in Sources */,
 			);

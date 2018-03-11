@@ -411,7 +411,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Add"/>
                                 <connections>
-                                    <segue destination="Xz5-Ot-ZZ5" kind="show" id="pQb-SA-07o"/>
+                                    <segue destination="Xz5-Ot-ZZ5" kind="show" identifier="addFront" id="pQb-SA-07o"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDb-qg-eRk">
@@ -592,10 +592,10 @@
             </objects>
             <point key="canvasLocation" x="4311" y="133"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Front View Controller-->
         <scene sceneID="OwK-bo-mdN">
             <objects>
-                <viewController id="Xz5-Ot-ZZ5" sceneMemberID="viewController">
+                <viewController id="Xz5-Ot-ZZ5" customClass="AddFrontViewController" customModule="AnyFlash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nXC-Fd-Mgi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -616,7 +616,7 @@
                                 <rect key="frame" x="16" y="20" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <segue destination="I2I-qO-Tha" kind="show" id="Dph-Lf-Kl8"/>
+                                    <segue destination="I2I-qO-Tha" kind="show" identifier="addFrontToCards" id="Dph-Lf-Kl8"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wpb-mh-NGW">
@@ -636,7 +636,7 @@
                                 <rect key="frame" x="352" y="270" width="62" height="30"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
-                                    <segue destination="AGo-Ai-zs8" kind="show" id="1fg-h9-yjI"/>
+                                    <action selector="cotinuePressed:" destination="Xz5-Ot-ZZ5" eventType="touchUpInside" id="8gC-7D-73q"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -648,7 +648,7 @@
                             <constraint firstItem="wbZ-bd-iCD" firstAttribute="top" secondItem="wpb-mh-NGW" secondAttribute="bottom" constant="50" id="IY2-pH-czF"/>
                             <constraint firstItem="NCc-wV-f6f" firstAttribute="top" secondItem="wpb-mh-NGW" secondAttribute="bottom" constant="50" id="PQN-f7-qeq"/>
                             <constraint firstItem="Ceg-Sl-eBS" firstAttribute="trailing" secondItem="wpb-mh-NGW" secondAttribute="trailing" constant="20" id="QSx-eu-Jfo"/>
-                            <constraint firstItem="wbZ-bd-iCD" firstAttribute="trailing" secondItem="Ceg-Sl-eBS" secondAttribute="trailing" constant="20" symbolic="YES" id="bfD-LR-1uJ"/>
+                            <constraint firstItem="wbZ-bd-iCD" firstAttribute="trailing" secondItem="Ceg-Sl-eBS" secondAttribute="trailing" symbolic="YES" id="bfD-LR-1uJ"/>
                             <constraint firstItem="wpb-mh-NGW" firstAttribute="top" secondItem="fip-2n-05p" secondAttribute="bottom" constant="50" id="cai-dw-WXR"/>
                             <constraint firstItem="wpb-mh-NGW" firstAttribute="leading" secondItem="Ceg-Sl-eBS" secondAttribute="leading" constant="20" id="ckJ-8C-PNo"/>
                             <constraint firstItem="NCc-wV-f6f" firstAttribute="leading" secondItem="Ceg-Sl-eBS" secondAttribute="leading" constant="20" id="fuT-k3-OFM"/>
@@ -659,15 +659,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ceg-Sl-eBS"/>
                     </view>
+                    <connections>
+                        <outlet property="testFiled" destination="wpb-mh-NGW" id="8pk-Hp-kiJ"/>
+                        <segue destination="AGo-Ai-zs8" kind="show" identifier="continue" id="4D9-pc-gmp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HcY-ra-rkD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2456" y="1048"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Back View Controller-->
         <scene sceneID="OjH-i5-jOO">
             <objects>
-                <viewController id="AGo-Ai-zs8" sceneMemberID="viewController">
+                <viewController id="AGo-Ai-zs8" customClass="AddBackViewController" customModule="AnyFlash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yuI-AS-tiq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -682,7 +686,7 @@
                                 <rect key="frame" x="16" y="20" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <segue destination="Xz5-Ot-ZZ5" kind="show" id="AV9-Yy-ckS"/>
+                                    <segue destination="Xz5-Ot-ZZ5" kind="show" identifier="backToFront" id="AV9-Yy-ckS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vwS-kh-2EJ">
@@ -804,9 +808,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pQb-SA-07o"/>
+        <segue reference="4D9-pc-gmp"/>
+        <segue reference="AV9-Yy-ckS"/>
         <segue reference="9YK-Yc-sa2"/>
-        <segue reference="Ocz-a0-jk1"/>
+        <segue reference="Dph-Lf-Kl8"/>
         <segue reference="Ibp-It-g9k"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -71,6 +71,10 @@ class CardsListViewController: UIViewController, UITableViewDataSource, UITableV
         if (segue.identifier == "cardListToCourses") {
             let destination = segue.destination as! CoursesViewController
             destination.uid = self.uid
+        } else if segue.identifier == "addFront" {
+            let destination = segue.destination as! AddFrontViewController
+            destination.uid = self.uid
+            destination.category = self.category
         }
     }
 }
