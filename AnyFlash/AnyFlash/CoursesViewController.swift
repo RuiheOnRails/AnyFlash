@@ -16,6 +16,24 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var table: UITableView!
     
+    var refHandle: DatabaseHandle!
+    var category = ""
+    var uid = ""
+    var ref: DatabaseReference! = Database.database().reference()
+    var flashCardData: NSDictionary!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        refHandle = self.ref.child("users").child(self.uid).observe(DataEventType.value, with: { (snapshot) in
+            let newData = snapshot.value as? NSDictionary
+            self.flashCardData = newData!
+            self.table.reloadData()
+        })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.ref.removeObserver(withHandle: self.refHandle);
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return flashCardData == nil ? 0 : flashCardData.count-1
     }
@@ -39,10 +57,13 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
         performSegue(withIdentifier: "categorySelected", sender: self)
     }
     
-    var category = ""
-    var uid = ""
-    var ref: DatabaseReference! = Database.database().reference()
-    var flashCardData: NSDictionary!
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "delete") { (action, indexPath) in
+            self.ref.child("users").child(self.uid).child(self.flashCardData.allKeys[indexPath.row] as! String).removeValue()
+        }
+         self.table.reloadData()
+        return [delete]
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,8 +87,6 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
         try! Auth.auth().signOut()
         performSegue(withIdentifier: "toSignIn", sender: self)
     }
-    
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
