@@ -29,7 +29,7 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
             self.table.reloadData()
         })
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         self.ref.removeObserver(withHandle: self.refHandle);
     }
@@ -57,14 +57,21 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
         performSegue(withIdentifier: "categorySelected", sender: self)
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .destructive, title: "delete") { (action, indexPath) in
-            self.ref.child("users").child(self.uid).child(self.flashCardData.allKeys[indexPath.row] as! String).removeValue()
-        }
-         self.table.reloadData()
-        return [delete]
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = self.contextualDeleteAction(forRowAtIndexPath: indexPath)
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     
+    func contextualDeleteAction(forRowAtIndexPath indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .destructive, title: "Delete") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+            NSLog("Deleting")
+            self.ref.child("users").child(self.uid).child(self.flashCardData.allKeys[indexPath.row] as! String).removeValue()
+            completionHandler(true)
+        }
+        
+        return action
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
