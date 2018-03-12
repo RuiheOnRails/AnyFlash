@@ -17,16 +17,19 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var table: UITableView!
     
     var refHandle: DatabaseHandle!
-    var category = ""
+    var catKey = ""
+    var catName = ""
     var uid = ""
     var ref: DatabaseReference! = Database.database().reference()
-    var flashCardData: NSDictionary!
+    var flashCardData: NSDictionary = [:]
     
     override func viewWillAppear(_ animated: Bool) {
         refHandle = self.ref.child("users").child(self.uid).observe(DataEventType.value, with: { (snapshot) in
-            let newData = snapshot.value as? NSDictionary
-            self.flashCardData = newData!
-            self.table.reloadData()
+            if(!(snapshot.value is NSNull)){
+                let newData = snapshot.value as? NSDictionary
+                self.flashCardData = newData!
+                self.table.reloadData()
+            }
         })
     }
 
@@ -35,25 +38,27 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return flashCardData == nil ? 0 : flashCardData.count-1
+        return flashCardData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
         
         let keys = flashCardData.allKeys
-        let label = keys[indexPath.row] as? String
-        cell.textLabel?.text = label == "newUserPlaceHolderKey" ? keys[keys.count-1] as? String : label
+        
+        let label = flashCardData.object(forKey: keys[indexPath.row] as! String) as! NSDictionary
+        cell.textLabel?.text = label.object(forKey: "catName") as? String
         tableView.tableFooterView = UIView()
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        self.category = flashCardData.allKeys[indexPath.row] as! String
-        if self.category == "newUserPlaceHolderKey" {
-            self.category = flashCardData.allKeys.last as! String
-        }
+        self.catKey = flashCardData.allKeys[indexPath.row] as! String
+        let name = flashCardData.object(forKey: self.catKey) as! NSDictionary
+        print(name)
+        self.catName = (name.object(forKey: "catName") as? String)!
+        print(self.catName)
         performSegue(withIdentifier: "categorySelected", sender: self)
     }
     
@@ -82,8 +87,11 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
         // Do any additional setup after loading the view.
         ref.child("users").child(self.uid).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
-            self.flashCardData = (snapshot.value as? NSDictionary)!
-            self.table.reloadData()
+            if(!(snapshot.value is NSNull)){
+                self.flashCardData = (snapshot.value as? NSDictionary)!
+                self.table.reloadData()
+            }
+
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -107,7 +115,7 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
         } else if segue.identifier == "categorySelected" {
             let destination = segue.destination as! CardsListViewController
             destination.uid = self.uid
-            destination.category = self.category
+            destination.catKey = self.catKey
         }
     }
 }

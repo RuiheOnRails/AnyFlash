@@ -14,7 +14,7 @@ class AddFrontViewController: UIViewController {
     
     var uid = ""
     var front = ""
-    var category = ""
+    var catKey = ""
     @IBOutlet weak var testFiled: UITextField!
     
     override func viewDidLoad() {
@@ -48,23 +48,21 @@ class AddFrontViewController: UIViewController {
         
     }
     
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addFrontToCards" {
             let destination = segue.destination as! CardsListViewController
             destination.uid = self.uid
-            destination.category = self.category
+            destination.catKey = self.catKey
         } else if segue.identifier == "continue" {
             let destination = segue.destination as! AddBackViewController
             destination.uid = self.uid
             destination.front = self.front
-            destination.category = self.category
+            destination.catKey = self.catKey
         } else if segue.identifier == "lookUpWord" {
             let destination = segue.destination as! DictionaryViewController
             destination.front = self.front
             destination.uid = self.uid
-            destination.category = self.category
+            destination.catKey = self.catKey
 
         }
     }

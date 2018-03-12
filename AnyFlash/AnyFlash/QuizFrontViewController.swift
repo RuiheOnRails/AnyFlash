@@ -13,7 +13,7 @@ import FirebaseDatabase
 class QuizFrontViewController: UIViewController {
     
     var uid = ""
-    var category = ""
+    var catKey = ""
     var flashCardData: NSDictionary!
     var currentIndex = 0
     var isFlipped = false
@@ -28,7 +28,7 @@ class QuizFrontViewController: UIViewController {
         super.viewDidLoad()
         
         ref = Database.database().reference()
-        ref.child("users").child(self.uid).child(category).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("users").child(self.uid).child(catKey).child("words").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             self.flashCardData = (snapshot.value as? NSDictionary)!
         }) { (error) in
@@ -63,14 +63,9 @@ class QuizFrontViewController: UIViewController {
 
         
         cardFrontLabel.text = keys[currentIndex]
+    
         
-        if cardFrontLabel.text != "cardPlaceHolderKey" {
-            self.cardFrontLabel.text = keys[currentIndex]
-        } else {
-            self.cardFrontLabel.text = keys.last
-        }
-        
-        numOutaNum.text = "\(self.currentIndex+1)/\(self.keys.count-1)"
+        numOutaNum.text = "\(self.currentIndex+1)/\(self.keys.count)"
     }
 
     override func didReceiveMemoryWarning() {
@@ -97,12 +92,7 @@ class QuizFrontViewController: UIViewController {
             frontText = (keys[currentIndex] as String)
         }
         
-        if frontText != "cardPlaceHolderKey" {
-            self.cardFrontLabel.text = keys[currentIndex] as String
-        } else {
-            self.cardFrontLabel.text = keys.last
-        }
-        numOutaNum.text = "\(self.currentIndex+1)/\(self.keys.count-1)"
+        numOutaNum.text = "\(self.currentIndex+1)/\(self.keys.count)"
         
         UIView.transition(with: cardFrontLabel, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
     }
@@ -200,12 +190,7 @@ class QuizFrontViewController: UIViewController {
                 frontText = (keys[currentIndex])
             }
 
-            if frontText != "cardPlaceHolderKey" {
-                self.cardFrontLabel.text = keys[currentIndex]
-            } else {
-                self.cardFrontLabel.text = keys.last
-            }
-            numOutaNum.text = "\(self.currentIndex+1)/\(self.keys.count-1)"
+            numOutaNum.text = "\(self.currentIndex+1)/\(self.keys.count)"
 
             UIView.transition(with: cardFrontLabel, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         } else {
@@ -217,12 +202,7 @@ class QuizFrontViewController: UIViewController {
                 backText = (values[currentIndex])
             }
 
-            if backText != "cardValue" {
-                self.cardFrontLabel.text = values[currentIndex]
-            } else {
-                self.cardFrontLabel.text = values.last
-            }
-            numOutaNum.text = "\(self.currentIndex+1)/\(self.keys.count-1)"
+            numOutaNum.text = "\(self.currentIndex+1)/\(self.keys.count)"
 
             UIView.transition(with: cardFrontLabel, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         }
@@ -242,21 +222,14 @@ class QuizFrontViewController: UIViewController {
             text = (keys[currentIndex])
         }
 
-        if text != "cardPlaceHolderKey" {
-            self.cardFrontLabel.text = keys[currentIndex]
-        } else {
-            self.cardFrontLabel.text = keys.last
-        }
-        numOutaNum.text = "\(self.currentIndex+1)/\(self.keys.count-1)"
+        numOutaNum.text = "\(self.currentIndex+1)/\(self.keys.count)"
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "backFromQuizFront" {
             let destination = segue.destination as! CardsListViewController
             destination.uid = self.uid
-            destination.category = self.category
+            destination.catKey = self.catKey
         }
     }
-
-
 }

@@ -14,7 +14,7 @@ class AddBackViewController: UIViewController {
     
     var uid = ""
     var front = ""
-    var category = ""
+    var catKey = ""
     var back = ""
     var ref: DatabaseReference!
     @IBOutlet weak var textField: UITextField!
@@ -35,22 +35,28 @@ class AddBackViewController: UIViewController {
         if (textField.text?.isEmpty)! {
             Util.showAlert(self, "back side of a card cannot be empty")
         } else {
-            self.ref.child("users").child(self.uid).child(self.category).child(self.front).child("back").setValue(textField.text)
-            self.ref.child("users").child(self.uid).child(self.category).child(self.front).child("learned").setValue(false)
+            let wordID = self.ref.child("users").child(self.uid)
+                .child(self.catKey).child("words").childByAutoId().key
+            
+            self.ref.child("users").child(self.uid)
+                .child(self.catKey).child("words").child(wordID).child("front").setValue(self.front)
+            self.ref.child("users").child(self.uid)
+                .child(self.catKey).child("words").child(wordID).child("back").setValue(textField.text)
+            self.ref.child("users").child(self.uid)
+                .child(self.catKey).child("words").child(wordID).child("learned").setValue(false)
             performSegue(withIdentifier: "cardAdded", sender: self)
         }
     }
-
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "backToFront" {
             let destination = segue.destination as! AddFrontViewController
             destination.uid = self.uid
-            destination.category = self.category
+            destination.catKey = self.catKey
         } else if segue.identifier == "cardAdded" {
             let destination = segue.destination as! CardsListViewController
             destination.uid = self.uid
-            destination.category = self.category
+            destination.catKey = self.catKey
         }
     }
 

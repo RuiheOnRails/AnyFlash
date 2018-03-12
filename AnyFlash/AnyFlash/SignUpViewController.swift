@@ -56,7 +56,7 @@ class SignUpViewController: UIViewController {
                     print(user?.uid ?? "no user id")
                 }
                 self.uid = (user?.uid)!
-                self.ref.child("users").child(self.uid).setValue(["newUserPlaceHolderKey": "placeHolderValue"])
+//                self.ref.child("users").child(self.uid).setValue(["newUserPlaceHolderKey": "placeHolderValue"])
                 self.performSegue(withIdentifier: "signUpDone", sender: self)
             }
         }

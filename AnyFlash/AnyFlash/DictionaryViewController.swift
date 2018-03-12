@@ -12,9 +12,14 @@ import FirebaseDatabase
 
 class DictionaryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    
     @IBOutlet weak var table: UITableView!
     
+    var front = ""
+    var catKey = ""
+    var uid = ""
+    var meanings: [String] = []
+    var meaningToUse = ""
+    var ref: DatabaseReference!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return meanings.count
@@ -32,14 +37,6 @@ class DictionaryViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         self.meaningToUse = meanings[indexPath.row]
     }
-    
-    
-    var front = ""
-    var category = ""
-    var uid = ""
-    var meanings: [String] = []
-    var meaningToUse = ""
-    var ref: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,8 +105,15 @@ class DictionaryViewController: UIViewController, UITableViewDataSource, UITable
         if meaningToUse.isEmpty{
             Util.showAlert(self, "please select a definition")
         } else {
-            self.ref.child("users").child(self.uid).child(self.category).child(self.front).child("back").setValue(self.meaningToUse)
-            self.ref.child("users").child(self.uid).child(self.category).child(self.front).child("learned").setValue(false)
+            let wordID = self.ref.child("users").child(self.uid)
+                .child(self.catKey).child("words").childByAutoId().key
+            
+            self.ref.child("users").child(self.uid)
+                .child(self.catKey).child("words").child(wordID).child("front").setValue(self.front)
+            self.ref.child("users").child(self.uid)
+                .child(self.catKey).child("words").child(wordID).child("back").setValue(meaningToUse)
+            self.ref.child("users").child(self.uid)
+                .child(self.catKey).child("words").child(wordID).child("learned").setValue(false)
             performSegue(withIdentifier: "addDictrionary", sender: self)
         }
     }
@@ -123,13 +127,11 @@ class DictionaryViewController: UIViewController, UITableViewDataSource, UITable
         if segue.identifier == "dictToFront" {
             let destination = segue.destination as! AddFrontViewController
             destination.uid = self.uid
-            destination.category = self.category
+            destination.catKey = self.catKey
         } else if segue.identifier == "addDictrionary" {
             let destination = segue.destination as! CardsListViewController
             destination.uid = self.uid
-            destination.category = self.category
+            destination.catKey = self.catKey
         }
     }
-
-
 }

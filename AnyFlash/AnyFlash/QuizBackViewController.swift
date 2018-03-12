@@ -49,7 +49,7 @@ class QuizBackViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "backFromQuizBack" {
             let destination = segue.destination as! CardsListViewController
-            destination.category = self.category
+            destination.catKey = self.category
             destination.uid = self.uid
         } else if segue.identifier == "flipBack" {
             let destination = segue.destination as! QuizFrontViewController

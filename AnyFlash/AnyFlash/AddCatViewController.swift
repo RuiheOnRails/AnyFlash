@@ -22,12 +22,12 @@ class AddCatViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         ref = Database.database().reference()
-        ref.child("users").child(self.uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            self.flashCardData = (snapshot.value as? NSDictionary)!
-        }) { (error) in
-            print(error.localizedDescription)
-        }
+//        ref.child("users").child(self.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+//            // Get user value
+//            self.flashCardData = (snapshot.value as? NSDictionary)!
+//        }) { (error) in
+//            print(error.localizedDescription)
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,7 +44,9 @@ class AddCatViewController: UIViewController {
         if (textField.text?.isEmpty)! {
             Util.showAlert(self, "category cannot have empty name")
         } else {
-            self.ref.child("users").child(self.uid).child(textField.text!).setValue(["cardPlaceHolderKey":"cardValue"])
+//            self.ref.child("users").child(self.uid).child(textField.text!).setValue(["cardPlaceHolderKey":"cardValue"])
+           let catKey = self.ref.child("users").child(self.uid).childByAutoId().key
+            self.ref.child("users").child(self.uid).child(catKey).setValue(["catName":textField.text!])
         }
         performSegue(withIdentifier: "addedCategory", sender: self)
     }
