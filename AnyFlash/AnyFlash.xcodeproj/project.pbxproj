@@ -22,6 +22,7 @@
 		F8097E7E2054E67100377CD7 /* AddBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8097E7D2054E67100377CD7 /* AddBackViewController.swift */; };
 		F8097E802055BED400377CD7 /* QuizFrontViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8097E7F2055BED400377CD7 /* QuizFrontViewController.swift */; };
 		F8097E822055C05200377CD7 /* QuizBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8097E812055C05200377CD7 /* QuizBackViewController.swift */; };
+		F8097E842055E78500377CD7 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8097E832055E78500377CD7 /* DictionaryViewController.swift */; };
 		F8AA15E320536DFA000FC593 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8AA15E220536DFA000FC593 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		F8097E7D2054E67100377CD7 /* AddBackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBackViewController.swift; sourceTree = "<group>"; };
 		F8097E7F2055BED400377CD7 /* QuizFrontViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizFrontViewController.swift; sourceTree = "<group>"; };
 		F8097E812055C05200377CD7 /* QuizBackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBackViewController.swift; sourceTree = "<group>"; };
+		F8097E832055E78500377CD7 /* DictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewController.swift; sourceTree = "<group>"; };
 		F8AA15E220536DFA000FC593 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 				D0D95DAE20429E1A00EFD997 /* AppDelegate.swift */,
 				D0D95DB020429E1A00EFD997 /* ViewController.swift */,
 				D0D95DB220429E1A00EFD997 /* Main.storyboard */,
+				F8097E832055E78500377CD7 /* DictionaryViewController.swift */,
 				F8097E7F2055BED400377CD7 /* QuizFrontViewController.swift */,
 				F8097E7B2054E45B00377CD7 /* AddFrontViewController.swift */,
 				F8097E812055C05200377CD7 /* QuizBackViewController.swift */,
@@ -260,6 +263,7 @@
 				F8097E822055C05200377CD7 /* QuizBackViewController.swift in Sources */,
 				D0D95DB120429E1A00EFD997 /* ViewController.swift in Sources */,
 				D0D95DAF20429E1A00EFD997 /* AppDelegate.swift in Sources */,
+				F8097E842055E78500377CD7 /* DictionaryViewController.swift in Sources */,
 				F8097E802055BED400377CD7 /* QuizFrontViewController.swift in Sources */,
 				F8097E782054B7F600377CD7 /* AddCatViewController.swift in Sources */,
 				F8097E7E2054E67100377CD7 /* AddBackViewController.swift in Sources */,
