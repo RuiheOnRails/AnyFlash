@@ -108,7 +108,8 @@ class DictionaryViewController: UIViewController, UITableViewDataSource, UITable
         if meaningToUse.isEmpty{
             Util.showAlert(self, "please select a definition")
         } else {
-            self.ref.child("users").child(self.uid).child(self.category).child(self.front).setValue(self.meaningToUse)
+            self.ref.child("users").child(self.uid).child(self.category).child(self.front).child("back").setValue(self.meaningToUse)
+            self.ref.child("users").child(self.uid).child(self.category).child(self.front).child("learned").setValue(false)
             performSegue(withIdentifier: "addDictrionary", sender: self)
         }
     }

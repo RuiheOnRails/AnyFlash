@@ -35,7 +35,8 @@ class AddBackViewController: UIViewController {
         if (textField.text?.isEmpty)! {
             Util.showAlert(self, "back side of a card cannot be empty")
         } else {
-            self.ref.child("users").child(self.uid).child(self.category).child(self.front).setValue(textField.text)
+            self.ref.child("users").child(self.uid).child(self.category).child(self.front).child("back").setValue(textField.text)
+            self.ref.child("users").child(self.uid).child(self.category).child(self.front).child("learned").setValue(false)
             performSegue(withIdentifier: "cardAdded", sender: self)
         }
     }
