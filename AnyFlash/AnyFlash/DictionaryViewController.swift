@@ -47,14 +47,12 @@ class DictionaryViewController: UIViewController, UITableViewDataSource, UITable
         table.estimatedRowHeight = 100
         table.rowHeight = UITableViewAutomaticDimension
 
-        // Do any additional setup after loading the view.
-        
-        // TODO: replace with your own app id and app key
         let appId = "54f32088"
         let appKey = "b6b14e9a6009ef52eed0d6eb9aa7169b"
         let language = "en"
-        let word = self.front
-        let word_id = word.lowercased().trimmingCharacters(in: .whitespaces) //word id is case sensitive and lowercase is required
+        let word = self.reformatString(self.front)
+        print(word)
+        let word_id = word
         let url = URL(string: "https://od-api.oxforddictionaries.com:443/api/v1/entries/\(language)/\(word_id)")!
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -76,8 +74,7 @@ class DictionaryViewController: UIViewController, UITableViewDataSource, UITable
                 let entries = inLexicalEntries.object(forKey: "entries") as! NSArray
                 let inEntries = entries[0] as! NSDictionary
                 let senses = inEntries.object(forKey: "senses") as! NSArray
-                
-                
+
                 senses.forEach({ (elem) in
                     let inSenses = elem as! NSDictionary // there should be multiple here
                     let definitions = inSenses.object(forKey: "definitions") as! NSArray
@@ -93,8 +90,6 @@ class DictionaryViewController: UIViewController, UITableViewDataSource, UITable
                     self.table.reloadData()
                 }
 
-                
-                
             } else {
                 print("failed to get data")
             }
@@ -133,5 +128,12 @@ class DictionaryViewController: UIViewController, UITableViewDataSource, UITable
             destination.uid = self.uid
             destination.catKey = self.catKey
         }
+    }
+    
+    func reformatString(_ str: String) -> String {
+        let ret = str.lowercased()
+        let okayChars : Set<Character> =
+            Set("abcdefghijklmnopqrstuvwxyz")
+        return String(ret.filter {okayChars.contains($0)})
     }
 }

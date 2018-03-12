@@ -21,7 +21,7 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
     var catName = ""
     var uid = ""
     var ref: DatabaseReference! = Database.database().reference()
-    var flashCardData: NSDictionary = [:]
+    var flashCardData: NSDictionary = [:] 
     
     override func viewWillAppear(_ animated: Bool) {
         refHandle = self.ref.child("users").child(self.uid).observe(DataEventType.value, with: { (snapshot) in
@@ -29,12 +29,15 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
                 let newData = snapshot.value as? NSDictionary
                 self.flashCardData = newData!
                 self.table.reloadData()
+            }else{
+                self.flashCardData = [:]
+                self.table.reloadData()
             }
         })
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        self.ref.removeObserver(withHandle: self.refHandle);
+        self.ref.child("users").child(self.uid).removeObserver(withHandle: self.refHandle);
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

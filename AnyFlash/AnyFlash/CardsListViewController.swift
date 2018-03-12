@@ -19,7 +19,17 @@ class CardsListViewController: UIViewController, UITableViewDataSource, UITableV
     var uid = ""
     var catKey = ""
     var catName = ""
-    var flashCardData: NSDictionary = [:]
+    var flashCardData: NSDictionary = [:]{
+        didSet {
+            print("didChange")
+            print(flashCardData)
+        }
+        
+        willSet{
+            print("willChange")
+            print(flashCardData)
+        }
+    }
     var ref: DatabaseReference! = Database.database().reference()
     var refHandle: DatabaseHandle!
     
@@ -32,6 +42,8 @@ class CardsListViewController: UIViewController, UITableViewDataSource, UITableV
                     self.table.reloadData()
                     self.quizButton.isEnabled = true
                 }else{
+                    self.flashCardData = [:]
+                    self.table.reloadData()
                     self.quizButton.isEnabled = false
                 }
             }else{
