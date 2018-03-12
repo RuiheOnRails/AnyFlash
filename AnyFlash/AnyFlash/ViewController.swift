@@ -13,6 +13,7 @@ import FirebaseAuth
 
 class ViewController: UIViewController {
     
+    var handle: AuthStateDidChangeListenerHandle?
     var uid = ""
     @IBOutlet weak var passwordBox: UITextField!
     @IBOutlet weak var emailBox: UITextField!
@@ -24,7 +25,20 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         ref = Database.database().reference()
-//        self.ref.child("test4").setValue(["thisComesFromApp": "valueHere!"])
+        //        self.ref.child("test4").setValue(["thisComesFromApp": "valueHere!"])
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
+            if user != nil {
+                self.uid = (user?.uid)!
+                self.performSeg()
+            }
+        })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
 
     override func didReceiveMemoryWarning() {
