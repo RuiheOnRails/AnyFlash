@@ -17,8 +17,7 @@ class QuizFrontViewController: UIViewController {
     var flashCardData: NSDictionary!
     var currentIndex = 0
     var isFlipped = false
-    var keys : [String] = []
-    var values : [String] = []
+    var frontBackData:[NSDictionary] = []
     var ref: DatabaseReference!
     @IBOutlet weak var numOutaNum: UILabel!
     
@@ -30,42 +29,20 @@ class QuizFrontViewController: UIViewController {
         ref = Database.database().reference()
         ref.child("users").child(self.uid).child(catKey).child("words").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
-            self.flashCardData = (snapshot.value as? NSDictionary)!
+            var tempData = (snapshot.value as? NSDictionary)!
+            let frontBackArray = tempData.allValues as! [NSDictionary]
+            frontBackArray.forEach({ (dict) in
+                let bool = dict.object(forKey: "learned") as! Bool
+                if !bool {
+                    self.frontBackData.append(dict)
+                }
+            })
+            self.cardFrontLabel.text = self.frontBackData[self.currentIndex].object(forKey: "front") as! String
+            self.numOutaNum.text = "\(self.currentIndex+1)/\(self.frontBackData.count)"
         }) { (error) in
             print(error.localizedDescription)
         }
         
-        // these handle front back
-        //======================================================
-        //keys = flashCardData.allKeys as! [String]
-        var tempKeys = flashCardData.allKeys as! [String]
-        
-        keys = []
-        
-        tempKeys.forEach { (key) in
-            let valueData = flashCardData.object(forKey: key) as! NSDictionary
-            if !(valueData.object(forKey: "learned") as! Bool){
-                self.keys.append(key)
-            }
-        }
-        
-        
-        //values = flashCardData.allValues as! [String]
-        let valuesData = flashCardData.allValues as! [NSDictionary]
-        
-        valuesData.forEach { (dict) in
-            if !(dict.object(forKey: "learned") as! Bool){
-                values.append(dict.object(forKey: "back") as! String)
-            }
-        }
-        
-        // ================================================
-
-        
-        cardFrontLabel.text = keys[currentIndex]
-    
-        
-        numOutaNum.text = "\(self.currentIndex+1)/\(self.keys.count)"
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,92 +52,40 @@ class QuizFrontViewController: UIViewController {
     
     @IBAction func randomClicked(_ sender: Any) {
         currentIndex = 0
-        self.keys = shuffle(self.keys)
-        self.values = []
-        self.keys.forEach { (elem) in
-            let valuesData = flashCardData.object(forKey: elem) as! NSDictionary
-            values.append(valuesData.object(forKey: "back") as! String)
-        }
-        
-        var frontText = ""
-        
+        self.frontBackData = shuffle(self.frontBackData)
         isFlipped = false
-        if self.currentIndex == keys.count-1 {
-            self.currentIndex = 0
-            frontText = (keys[currentIndex] as String)
-        } else {
-            frontText = (keys[currentIndex] as String)
-        }
-        
-        numOutaNum.text = "\(self.currentIndex+1)/\(self.keys.count)"
-        
-        UIView.transition(with: cardFrontLabel, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+        cardFrontLabel.text = self.frontBackData[currentIndex].object(forKey: "front") as! String
+        numOutaNum.text = "\(self.currentIndex+1)/\(self.frontBackData.count)"
     }
-    
-    
-    
+
     @IBAction func inOrderPressed(_ sender: Any) {
         currentIndex = 0
         isFlipped = false
+        frontBackData = []
         
-        
-//        keys = flashCardData.allKeys as! [String]
-//        //values = flashCardData.allValues as! [String]
-//        let valuesData = flashCardData.allValues as! [NSDictionary]
-//        values = []
-//        valuesData.forEach { (dict) in
-//            values.append(dict.object(forKey: "back") as! String)
-//        }
-        
-        keys = []
-        values = []
-        
-        // these handle front back
-        //======================================================
-        //keys = flashCardData.allKeys as! [String]
-        var tempKeys = flashCardData.allKeys as! [String]
-        
-        keys = []
-        
-        tempKeys.forEach { (key) in
-            let valueData = flashCardData.object(forKey: key) as! NSDictionary
-            if !(valueData.object(forKey: "learned") as! Bool){
-                self.keys.append(key)
-            }
+        ref.child("users").child(self.uid).child(catKey).child("words").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            var tempData = (snapshot.value as? NSDictionary)!
+            let frontBackArray = tempData.allValues as! [NSDictionary]
+            frontBackArray.forEach({ (dict) in
+                let bool = dict.object(forKey: "learned") as! Bool
+                if !bool {
+                    self.frontBackData.append(dict)
+                }
+            })
+            self.cardFrontLabel.text = self.frontBackData[self.currentIndex].object(forKey: "front") as! String
+            self.numOutaNum.text = "\(self.currentIndex+1)/\(self.frontBackData.count)"
+        }) { (error) in
+            print(error.localizedDescription)
         }
+
         
-        
-        //values = flashCardData.allValues as! [String]
-        let valuesData = flashCardData.allValues as! [NSDictionary]
-        
-        valuesData.forEach { (dict) in
-            if !(dict.object(forKey: "learned") as! Bool){
-                values.append(dict.object(forKey: "back") as! String)
-            }
-        }
-        
-        // ================================================
-        
-        
-        
-        cardFrontLabel.text = keys[currentIndex] as String
-        
-        if cardFrontLabel.text != "cardPlaceHolderKey" {
-            self.cardFrontLabel.text = keys[currentIndex] as String
-        } else {
-            self.cardFrontLabel.text = keys.last
-        }
-        
-        numOutaNum.text = "\(self.currentIndex+1)/\(self.keys.count-1)"
     }
     
-    
-    
-    
     //this shuffles an array through math
-    func shuffle(_ listToShuffle: [String]) -> [String] {
+    func shuffle(_ listToShuffle: [NSDictionary]) -> [NSDictionary] {
         var counter = listToShuffle.count
-        var array:[String] = []
+        var array:[NSDictionary] = []
         listToShuffle.forEach { (elem) in
             array.append(elem)
         }
@@ -179,50 +104,33 @@ class QuizFrontViewController: UIViewController {
     
     
     @IBAction func btnFlip(_ sender: Any) {
-        var frontText = ""
-        var backText = ""
         if isFlipped{
             isFlipped = false
-            if self.currentIndex == keys.count-1 {
+            if self.currentIndex == frontBackData.count {
                 self.currentIndex = 0
-                frontText = (keys[currentIndex])
-            } else {
-                frontText = (keys[currentIndex])
             }
-
-            numOutaNum.text = "\(self.currentIndex+1)/\(self.keys.count)"
-
+            self.cardFrontLabel.text = (self.frontBackData[currentIndex].object(forKey: "front") as! String)
+            numOutaNum.text = "\(self.currentIndex+1)/\(self.frontBackData.count)"
             UIView.transition(with: cardFrontLabel, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         } else {
             isFlipped = true
-            if self.currentIndex == values.count-1 {
+            if self.currentIndex == frontBackData.count {
                 self.currentIndex = 0
-                backText = (values[currentIndex])
-            } else {
-                backText = (values[currentIndex])
             }
-
-            numOutaNum.text = "\(self.currentIndex+1)/\(self.keys.count)"
-
+            self.cardFrontLabel.text = (self.frontBackData[currentIndex].object(forKey: "back") as! String)
+            numOutaNum.text = "\(self.currentIndex+1)/\(self.frontBackData.count)"
             UIView.transition(with: cardFrontLabel, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         }
     }
-    
-    
-    
-    
+
     @IBAction func nextCardPressed(_ sender: Any) {
         self.currentIndex+=1
-        var text = ""
         isFlipped = false
-        if self.currentIndex == keys.count-1 {
+        if self.currentIndex == frontBackData.count {
             self.currentIndex = 0
-            text = (keys[currentIndex])
-        } else {
-            text = (keys[currentIndex])
         }
-
-        numOutaNum.text = "\(self.currentIndex+1)/\(self.keys.count)"
+        self.cardFrontLabel.text = (self.frontBackData[currentIndex].object(forKey: "front") as! String)
+        numOutaNum.text = "\(self.currentIndex+1)/\(self.frontBackData.count)"
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
