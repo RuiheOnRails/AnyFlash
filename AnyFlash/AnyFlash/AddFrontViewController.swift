@@ -37,6 +37,19 @@ class AddFrontViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func lookItUpPressed(_ sender: Any) {
+        if (testFiled.text?.isEmpty)! {
+            Util.showAlert(self, "please enter a front for your card")
+        } else {
+            self.front = testFiled.text!
+            performSegue(withIdentifier: "lookUpWord", sender: self)
+        }
+        
+    }
+    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addFrontToCards" {
             let destination = segue.destination as! CardsListViewController
@@ -47,6 +60,12 @@ class AddFrontViewController: UIViewController {
             destination.uid = self.uid
             destination.front = self.front
             destination.category = self.category
+        } else if segue.identifier == "lookUpWord" {
+            let destination = segue.destination as! DictionaryViewController
+            destination.front = self.front
+            destination.uid = self.uid
+            destination.category = self.category
+
         }
     }
     
