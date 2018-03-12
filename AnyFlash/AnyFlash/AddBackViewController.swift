@@ -23,7 +23,6 @@ class AddBackViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         ref = Database.database().reference()
-        print(self.front)
     }
 
     override func didReceiveMemoryWarning() {

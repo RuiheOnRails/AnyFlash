@@ -19,17 +19,7 @@ class CardsListViewController: UIViewController, UITableViewDataSource, UITableV
     var uid = ""
     var catKey = ""
     var catName = ""
-    var flashCardData: NSDictionary = [:]{
-        didSet {
-            print("didChange")
-            print(flashCardData)
-        }
-        
-        willSet{
-            print("willChange")
-            print(flashCardData)
-        }
-    }
+    var flashCardData: NSDictionary = [:]
     var ref: DatabaseReference! = Database.database().reference()
     var refHandle: DatabaseHandle!
     
@@ -107,7 +97,6 @@ class CardsListViewController: UIViewController, UITableViewDataSource, UITableV
     
     func contextualDeleteAction(forRowAtIndexPath indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .destructive, title: "Delete") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
-            NSLog("Deleting")
             self.ref.child("users").child(self.uid).child(self.catKey).child("words").child(self.flashCardData.allKeys[indexPath.row] as! String).removeValue()
             completionHandler(true)
         }

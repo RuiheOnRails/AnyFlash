@@ -59,9 +59,7 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         self.catKey = flashCardData.allKeys[indexPath.row] as! String
         let name = flashCardData.object(forKey: self.catKey) as! NSDictionary
-        print(name)
         self.catName = (name.object(forKey: "catName") as? String)!
-        print(self.catName)
         performSegue(withIdentifier: "categorySelected", sender: self)
     }
     

@@ -62,7 +62,6 @@ class ViewController: UIViewController {
         }
     }
     
-    
     func performSeg() {
         performSegue(withIdentifier: "signInDone", sender: self)
     }
@@ -74,4 +73,3 @@ class ViewController: UIViewController {
         }
     }
 }
-

@@ -51,7 +51,6 @@ class DictionaryViewController: UIViewController, UITableViewDataSource, UITable
         let appKey = "b6b14e9a6009ef52eed0d6eb9aa7169b"
         let language = "en"
         let word = self.reformatString(self.front)
-        print(word)
         let word_id = word
         let url = URL(string: "https://od-api.oxforddictionaries.com:443/api/v1/entries/\(language)/\(word_id)")!
         var request = URLRequest(url: url)
@@ -64,8 +63,6 @@ class DictionaryViewController: UIViewController, UITableViewDataSource, UITable
             if let response = response,
                 let data = data,
                 let jsonData = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) {
-                //print(response)
-                //print(jsonData)
                 let usableJsonData = jsonData as! NSDictionary
                 let results = usableJsonData.object(forKey: "results") as! NSArray
                 let inResults = results[0] as! NSDictionary
@@ -79,19 +76,15 @@ class DictionaryViewController: UIViewController, UITableViewDataSource, UITable
                     let inSenses = elem as! NSDictionary // there should be multiple here
                     let definitions = inSenses.object(forKey: "definitions") as! NSArray
                     let def = definitions[0] as! String
-                    
-                    print(def)
                     self.meanings.append(def)
                 })
                 
-                print("outside reload")
                 DispatchQueue.main.async {
-                    print("inside reload")
                     self.table.reloadData()
                 }
 
             } else {
-                print("failed to get data")
+                Util.showAlert(self, "failed to get definition")
             }
         }).resume()
     }

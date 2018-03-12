@@ -52,8 +52,6 @@ class SignUpViewController: UIViewController {
                 (user, error) in
                 if((error) != nil){
                     NSLog(error.debugDescription)
-                }else{
-                    print(user?.uid ?? "no user id")
                 }
                 self.uid = (user?.uid)!
 //                self.ref.child("users").child(self.uid).setValue(["newUserPlaceHolderKey": "placeHolderValue"])
