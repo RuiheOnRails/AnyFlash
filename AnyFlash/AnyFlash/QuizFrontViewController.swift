@@ -15,17 +15,24 @@ class QuizFrontViewController: UIViewController {
     var flashCardData: NSDictionary!
     var currentIndex = 0
     var isFlipped = false
-    var keys : [Any] = []
-    var values : [Any] = []
+    var keys : [String] = []
+    var values : [String] = []
     @IBOutlet weak var numOutaNum: UILabel!
     
     @IBOutlet weak var cardFrontLabel: UILabel!
     
     override func viewDidLoad() {
-        keys = flashCardData.allKeys
-        values = flashCardData.allValues
+        keys = flashCardData.allKeys as! [String]
+        values = flashCardData.allValues as! [String]
         super.viewDidLoad()
-        cardFrontLabel.text = keys[currentIndex] as? String
+        cardFrontLabel.text = keys[currentIndex]
+        
+        if cardFrontLabel.text != "cardPlaceHolderKey" {
+            self.cardFrontLabel.text = keys[currentIndex]
+        } else {
+            self.cardFrontLabel.text = keys.last
+        }
+        
         numOutaNum.text = "\(self.currentIndex+1)/\(self.flashCardData.count-1)"
     }
 
@@ -34,6 +41,76 @@ class QuizFrontViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func randomClicked(_ sender: Any) {
+        currentIndex = 0
+        self.keys = shuffle(self.keys)
+        self.values = []
+        self.keys.forEach { (elem) in
+            values.append(flashCardData.object(forKey: elem) as! String)
+        }
+        
+        var frontText = ""
+        
+        isFlipped = false
+        if self.currentIndex == keys.count-1 {
+            self.currentIndex = 0
+            frontText = (keys[currentIndex] as String)
+        } else {
+            frontText = (keys[currentIndex] as String)
+        }
+        
+        if frontText != "cardPlaceHolderKey" {
+            self.cardFrontLabel.text = keys[currentIndex] as String
+        } else {
+            self.cardFrontLabel.text = keys.last
+        }
+        numOutaNum.text = "\(self.currentIndex+1)/\(self.flashCardData.count-1)"
+        
+        UIView.transition(with: cardFrontLabel, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+    }
+    
+    
+    
+    @IBAction func inOrderPressed(_ sender: Any) {
+        currentIndex = 0
+        isFlipped = false
+        keys = flashCardData.allKeys as! [String]
+        values = flashCardData.allValues as! [String]
+        cardFrontLabel.text = keys[currentIndex] as String
+        
+        if cardFrontLabel.text != "cardPlaceHolderKey" {
+            self.cardFrontLabel.text = keys[currentIndex] as String
+        } else {
+            self.cardFrontLabel.text = keys.last
+        }
+        
+        numOutaNum.text = "\(self.currentIndex+1)/\(self.flashCardData.count-1)"
+    }
+    
+    
+    
+    
+    //this shuffles an array through math
+    func shuffle(_ listToShuffle: [String]) -> [String] {
+        var counter = listToShuffle.count
+        var array:[String] = []
+        listToShuffle.forEach { (elem) in
+            array.append(elem)
+        }
+        
+        while counter > 0 {
+            let idxRandom = floor(drand48() * Double(counter))
+            counter-=1
+            
+            let temp = array[counter]
+            array[counter] = array[Int(idxRandom)]
+            array[Int(idxRandom)] = temp
+        }
+        
+        return array
+    }
+    
+    
     @IBAction func btnFlip(_ sender: Any) {
         var frontText = ""
         var backText = ""
@@ -41,15 +118,15 @@ class QuizFrontViewController: UIViewController {
             isFlipped = false
             if self.currentIndex == keys.count-1 {
                 self.currentIndex = 0
-                frontText = (keys[currentIndex] as? String)!
+                frontText = (keys[currentIndex])
             } else {
-                frontText = (keys[currentIndex] as? String)!
+                frontText = (keys[currentIndex])
             }
 
             if frontText != "cardPlaceHolderKey" {
-                self.cardFrontLabel.text = keys[currentIndex] as? String
+                self.cardFrontLabel.text = keys[currentIndex]
             } else {
-                self.cardFrontLabel.text = keys.last as? String
+                self.cardFrontLabel.text = keys.last
             }
             numOutaNum.text = "\(self.currentIndex+1)/\(self.flashCardData.count-1)"
 
@@ -58,15 +135,15 @@ class QuizFrontViewController: UIViewController {
             isFlipped = true
             if self.currentIndex == values.count-1 {
                 self.currentIndex = 0
-                backText = (values[currentIndex] as? String)!
+                backText = (values[currentIndex])
             } else {
-                backText = (values[currentIndex] as? String)!
+                backText = (values[currentIndex])
             }
 
             if backText != "cardValue" {
-                self.cardFrontLabel.text = values[currentIndex] as? String
+                self.cardFrontLabel.text = values[currentIndex]
             } else {
-                self.cardFrontLabel.text = values.last as? String
+                self.cardFrontLabel.text = values.last
             }
             numOutaNum.text = "\(self.currentIndex+1)/\(self.flashCardData.count-1)"
 
@@ -82,15 +159,15 @@ class QuizFrontViewController: UIViewController {
         isFlipped = false
         if self.currentIndex == keys.count-1 {
             self.currentIndex = 0
-            text = (keys[currentIndex] as? String)!
+            text = (keys[currentIndex])
         } else {
-            text = (keys[currentIndex] as? String)!
+            text = (keys[currentIndex])
         }
 
         if text != "cardPlaceHolderKey" {
-            self.cardFrontLabel.text = keys[currentIndex] as? String
+            self.cardFrontLabel.text = keys[currentIndex]
         } else {
-            self.cardFrontLabel.text = keys.last as? String
+            self.cardFrontLabel.text = keys.last
         }
         numOutaNum.text = "\(self.currentIndex+1)/\(self.flashCardData.count-1)"
     }

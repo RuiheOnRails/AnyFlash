@@ -465,6 +465,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYF-ID-4RZ">
                                 <rect key="frame" x="20" y="284" width="76" height="30"/>
                                 <state key="normal" title="Randomize"/>
+                                <connections>
+                                    <action selector="randomClicked:" destination="ncg-zp-QeC" eventType="touchUpInside" id="JWl-q8-hwo"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qNV-k2-EFJ">
                                 <rect key="frame" x="16" y="20" width="34" height="30"/>
@@ -488,6 +491,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBq-fV-JJ9">
                                 <rect key="frame" x="131" y="284" width="56" height="30"/>
                                 <state key="normal" title="In Order"/>
+                                <connections>
+                                    <action selector="inOrderPressed:" destination="ncg-zp-QeC" eventType="touchUpInside" id="C9w-Gf-X4P"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLU-mG-CTv">
                                 <rect key="frame" x="192" y="432" width="30" height="30"/>
@@ -763,7 +769,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="pQb-SA-07o"/>
-        <segue reference="Ocz-a0-jk1"/>
+        <segue reference="fm4-vH-TJD"/>
         <segue reference="Ibp-It-g9k"/>
         <segue reference="hAo-ZA-dqM"/>
     </inferredMetricsTieBreakers>

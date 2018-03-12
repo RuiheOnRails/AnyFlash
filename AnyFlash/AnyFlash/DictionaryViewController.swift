@@ -57,7 +57,7 @@ class DictionaryViewController: UIViewController, UITableViewDataSource, UITable
         let appKey = "b6b14e9a6009ef52eed0d6eb9aa7169b"
         let language = "en"
         let word = self.front
-        let word_id = word.lowercased() //word id is case sensitive and lowercase is required
+        let word_id = word.lowercased().trimmingCharacters(in: .whitespaces) //word id is case sensitive and lowercase is required
         let url = URL(string: "https://od-api.oxforddictionaries.com:443/api/v1/entries/\(language)/\(word_id)")!
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Accept")

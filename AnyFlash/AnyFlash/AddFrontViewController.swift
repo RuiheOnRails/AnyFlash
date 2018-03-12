@@ -29,7 +29,7 @@ class AddFrontViewController: UIViewController {
     }
     
     @IBAction func cotinuePressed(_ sender: Any) {
-        if (testFiled.text?.isEmpty)! {
+        if (testFiled.text?.trimmingCharacters(in: .whitespaces).isEmpty)! {
             Util.showAlert(self, "please enter a front for your card")
         } else {
             self.front = testFiled.text!
@@ -39,7 +39,7 @@ class AddFrontViewController: UIViewController {
     
     
     @IBAction func lookItUpPressed(_ sender: Any) {
-        if (testFiled.text?.isEmpty)! {
+        if (testFiled.text?.trimmingCharacters(in: .whitespaces).isEmpty)! {
             Util.showAlert(self, "please enter a front for your card")
         } else {
             self.front = testFiled.text!
