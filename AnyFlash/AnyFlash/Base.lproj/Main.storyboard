@@ -315,6 +315,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJG-ZW-hwP">
+                                <rect key="frame" x="20" y="13" width="57" height="30"/>
+                                <state key="normal" title="Sign out"/>
+                                <connections>
+                                    <action selector="signOutClicked:" destination="8It-em-ND5" eventType="touchUpInside" id="u05-Bh-9gs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -323,17 +330,20 @@
                             <constraint firstItem="PIm-QQ-b53" firstAttribute="top" secondItem="FPe-GY-Spy" secondAttribute="bottom" constant="20" id="LaK-fd-9s7"/>
                             <constraint firstItem="gPs-h5-ugQ" firstAttribute="top" secondItem="ni0-4K-pQm" secondAttribute="top" constant="20" id="Nwj-kQ-cgQ"/>
                             <constraint firstItem="HdS-ZU-g6M" firstAttribute="top" secondItem="Njf-e6-SwL" secondAttribute="top" id="VsK-lo-6o5"/>
+                            <constraint firstItem="cJG-ZW-hwP" firstAttribute="leading" secondItem="Njf-e6-SwL" secondAttribute="leading" constant="20" id="XoY-Bp-hPz"/>
                             <constraint firstItem="gPs-h5-ugQ" firstAttribute="centerX" secondItem="ni0-4K-pQm" secondAttribute="centerX" id="cI8-cZ-Ufq"/>
                             <constraint firstItem="FPe-GY-Spy" firstAttribute="leading" secondItem="Njf-e6-SwL" secondAttribute="leading" constant="20" id="irg-2f-Rqt"/>
                             <constraint firstItem="PIm-QQ-b53" firstAttribute="leading" secondItem="Njf-e6-SwL" secondAttribute="leading" constant="20" id="lja-Ce-BKv"/>
                             <constraint firstItem="FPe-GY-Spy" firstAttribute="top" secondItem="gPs-h5-ugQ" secondAttribute="bottom" constant="15" id="u0G-iM-Gtb"/>
                             <constraint firstItem="Njf-e6-SwL" firstAttribute="bottom" secondItem="PIm-QQ-b53" secondAttribute="bottom" constant="20" id="zF4-9d-WGl"/>
+                            <constraint firstItem="Njf-e6-SwL" firstAttribute="top" secondItem="cJG-ZW-hwP" secondAttribute="top" constant="7" id="zoc-UA-VlA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Njf-e6-SwL"/>
                     </view>
                     <connections>
                         <outlet property="table" destination="PIm-QQ-b53" id="kyt-5o-ctw"/>
                         <segue destination="I2I-qO-Tha" kind="show" identifier="categorySelected" id="Ocz-a0-jk1"/>
+                        <segue destination="2Sv-3N-gEb" kind="show" identifier="toSignIn" id="hAo-ZA-dqM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jod-BX-FD9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -752,9 +762,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pgQ-zb-5ti"/>
         <segue reference="pQb-SA-07o"/>
-        <segue reference="fm4-vH-TJD"/>
+        <segue reference="Ocz-a0-jk1"/>
         <segue reference="Ibp-It-g9k"/>
+        <segue reference="hAo-ZA-dqM"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -60,6 +60,14 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
             print(error.localizedDescription)
         }
     }
+    
+    
+    @IBAction func signOutClicked(_ sender: Any) {
+        try! Auth.auth().signOut()
+        performSegue(withIdentifier: "toSignIn", sender: self)
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
