@@ -64,12 +64,14 @@ class CardsListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let markLearned = self.contextualMarkLearnedAction(forRowAtIndexPath: indexPath)
         let deleteAction = self.contextualDeleteAction(forRowAtIndexPath: indexPath)
-        return UISwipeActionsConfiguration(actions: [deleteAction])
+        return UISwipeActionsConfiguration(actions: [deleteAction, markLearned])
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let markInP = self.contextualMarkAction(forRowAtIndexPath: indexPath)
+
         return UISwipeActionsConfiguration(actions: [markInP])
     }
     
@@ -78,6 +80,15 @@ class CardsListViewController: UIViewController, UITableViewDataSource, UITableV
         self.ref.child("users").child(self.uid).child(self.catKey).child("words").child(self.flashCardData.allKeys[indexPath.row] as! String).child("learned").setValue(false)
             completionHandler(true)
             self.table.cellForRow(at: indexPath)?.backgroundColor = UIColor.white
+        }
+        return action
+    }
+    
+    func contextualMarkLearnedAction(forRowAtIndexPath indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .normal, title: "Mark Learned") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+            self.ref.child("users").child(self.uid).child(self.catKey).child("words").child(self.flashCardData.allKeys[indexPath.row] as! String).child("learned").setValue(true)
+            completionHandler(true)
+            self.table.cellForRow(at: indexPath)?.backgroundColor = UIColor(red:220/255, green: 247/255, blue: 205/255, alpha: 1)
         }
         return action
     }
