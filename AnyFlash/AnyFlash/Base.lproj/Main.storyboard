@@ -515,16 +515,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XkS-Mb-o2c">
-                                <rect key="frame" x="177" y="508" width="60" height="30"/>
-                                <state key="normal" title="Learning"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="yLU-mG-CTv" firstAttribute="centerX" secondItem="6iZ-5G-CbB" secondAttribute="centerX" id="59Y-dO-gBm"/>
                             <constraint firstItem="eYf-U6-EY3" firstAttribute="centerX" secondItem="Hx1-2g-fOi" secondAttribute="centerX" id="5KR-g1-HzU"/>
-                            <constraint firstItem="XkS-Mb-o2c" firstAttribute="top" secondItem="eYf-U6-EY3" secondAttribute="bottom" constant="8" id="EPB-00-MK8"/>
                             <constraint firstItem="iBF-eX-CWh" firstAttribute="top" secondItem="nYF-ID-4RZ" secondAttribute="bottom" constant="40" id="GRT-D0-VXq"/>
                             <constraint firstItem="3MC-Wq-bwb" firstAttribute="leading" secondItem="uBq-fV-JJ9" secondAttribute="trailing" constant="33" id="GxH-2D-bfi"/>
                             <constraint firstItem="iBF-eX-CWh" firstAttribute="centerY" secondItem="6iZ-5G-CbB" secondAttribute="centerY" id="KfM-7W-5Ja"/>
@@ -538,7 +533,6 @@
                             <constraint firstItem="eYf-U6-EY3" firstAttribute="top" secondItem="yLU-mG-CTv" secondAttribute="bottom" constant="8" id="mNI-pv-b9j"/>
                             <constraint firstItem="Cec-QS-ifG" firstAttribute="top" secondItem="6iZ-5G-CbB" secondAttribute="top" constant="20" id="nYI-Zk-sO1"/>
                             <constraint firstItem="Cec-QS-ifG" firstAttribute="centerX" secondItem="6iZ-5G-CbB" secondAttribute="centerX" id="ohg-1q-Ung"/>
-                            <constraint firstItem="XkS-Mb-o2c" firstAttribute="centerX" secondItem="Hx1-2g-fOi" secondAttribute="centerX" id="qrH-co-KOB"/>
                             <constraint firstItem="yLU-mG-CTv" firstAttribute="top" secondItem="iBF-eX-CWh" secondAttribute="bottom" constant="50" id="uoC-fN-JpO"/>
                             <constraint firstItem="Hx1-2g-fOi" firstAttribute="trailing" secondItem="iBF-eX-CWh" secondAttribute="trailing" constant="20" id="yyS-tu-YN6"/>
                             <constraint firstItem="iBF-eX-CWh" firstAttribute="leading" secondItem="Hx1-2g-fOi" secondAttribute="leading" constant="20" id="zyE-ja-Zl0"/>
