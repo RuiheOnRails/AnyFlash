@@ -23,7 +23,11 @@ class QuizFrontViewController: UIViewController {
     
     override func viewDidLoad() {
         keys = flashCardData.allKeys as! [String]
-        values = flashCardData.allValues as! [String]
+        //values = flashCardData.allValues as! [String]
+        let valuesData = flashCardData.allValues as! [NSDictionary]
+        valuesData.forEach { (dict) in
+            values.append(dict.object(forKey: "back") as! String)
+        }
         super.viewDidLoad()
         cardFrontLabel.text = keys[currentIndex]
         
@@ -46,7 +50,8 @@ class QuizFrontViewController: UIViewController {
         self.keys = shuffle(self.keys)
         self.values = []
         self.keys.forEach { (elem) in
-            values.append(flashCardData.object(forKey: elem) as! String)
+            let valuesData = flashCardData.object(forKey: elem) as! NSDictionary
+            values.append(valuesData.object(forKey: "back") as! String)
         }
         
         var frontText = ""
@@ -75,7 +80,14 @@ class QuizFrontViewController: UIViewController {
         currentIndex = 0
         isFlipped = false
         keys = flashCardData.allKeys as! [String]
-        values = flashCardData.allValues as! [String]
+        //values = flashCardData.allValues as! [String]
+        let valuesData = flashCardData.allValues as! [NSDictionary]
+        values = []
+        valuesData.forEach { (dict) in
+            values.append(dict.object(forKey: "back") as! String)
+        }
+        
+        
         cardFrontLabel.text = keys[currentIndex] as String
         
         if cardFrontLabel.text != "cardPlaceHolderKey" {

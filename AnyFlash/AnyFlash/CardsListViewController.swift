@@ -21,9 +21,9 @@ class CardsListViewController: UIViewController, UITableViewDataSource, UITableV
         let keys = flashCardData.allKeys
         let label = keys[indexPath.row] as? String
         cell.textLabel?.text = label == "cardPlaceHolderKey" ? keys[keys.count-1] as? String : label
-        cell.detailTextLabel?.text = flashCardData.object(forKey: cell.textLabel?.text ?? "this hsould not show up") as? String
+        let valuesData = flashCardData.object(forKey: cell.textLabel?.text ?? "this hsould not show up") as? NSDictionary
+        cell.detailTextLabel?.text = valuesData?.object(forKey: "back") as! String
         tableView.tableFooterView = UIView()
-        
         return cell
     }
     
