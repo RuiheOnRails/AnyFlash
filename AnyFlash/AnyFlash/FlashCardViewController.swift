@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class QuizFrontViewController: UIViewController {
+class FlashCardViewController: UIViewController {
     
     var uid = ""
     var catKey = ""

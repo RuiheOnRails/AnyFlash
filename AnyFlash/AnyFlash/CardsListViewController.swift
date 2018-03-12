@@ -165,7 +165,7 @@ class CardsListViewController: UIViewController, UITableViewDataSource, UITableV
             destination.catKey = self.catKey
         } else if segue.identifier == "toQuizView" {
 
-            let destination = segue.destination as! QuizFrontViewController
+            let destination = segue.destination as! FlashCardViewController
             destination.uid = self.uid
             destination.catKey = self.catKey
             destination.flashCardData = self.flashCardData

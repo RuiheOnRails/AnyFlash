@@ -74,9 +74,11 @@ class DictionaryViewController: UIViewController, UITableViewDataSource, UITable
 
                 senses.forEach({ (elem) in
                     let inSenses = elem as! NSDictionary // there should be multiple here
-                    let definitions = inSenses.object(forKey: "definitions") as! NSArray
-                    let def = definitions[0] as! String
-                    self.meanings.append(def)
+                    if (inSenses.object(forKey: "definitions") != nil) {
+                        let definitions = inSenses.object(forKey: "definitions") as! NSArray
+                        let def = definitions[0] as! String
+                        self.meanings.append(def)
+                    }
                 })
                 
                 DispatchQueue.main.async {

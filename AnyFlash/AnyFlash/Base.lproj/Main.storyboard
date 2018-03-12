@@ -454,10 +454,10 @@
             </objects>
             <point key="canvasLocation" x="2907" y="106"/>
         </scene>
-        <!--Quiz Front View Controller-->
+        <!--Flash Card View Controller-->
         <scene sceneID="iSb-c2-Sga">
             <objects>
-                <viewController id="ncg-zp-QeC" customClass="QuizFrontViewController" customModule="AnyFlash" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ncg-zp-QeC" customClass="FlashCardViewController" customModule="AnyFlash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6iZ-5G-CbB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
