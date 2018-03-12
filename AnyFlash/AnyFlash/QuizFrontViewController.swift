@@ -26,6 +26,7 @@ class QuizFrontViewController: UIViewController {
         values = flashCardData.allValues
         super.viewDidLoad()
         cardFrontLabel.text = keys[currentIndex] as? String
+        numOutaNum.text = "\(self.currentIndex+1)/\(self.flashCardData.count-1)"
     }
 
     override func didReceiveMemoryWarning() {
@@ -92,6 +93,14 @@ class QuizFrontViewController: UIViewController {
             self.cardFrontLabel.text = keys.last as? String
         }
         numOutaNum.text = "\(self.currentIndex+1)/\(self.flashCardData.count-1)"
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "backFromQuizFront" {
+            let destination = segue.destination as! CardsListViewController
+            destination.uid = self.uid
+            destination.category = self.category
+        }
     }
 
 

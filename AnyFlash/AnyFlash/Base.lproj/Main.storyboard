@@ -723,10 +723,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JbR-ge-ma9">
-                                <rect key="frame" x="323" y="20" width="75" height="30"/>
-                                <state key="normal" title="(After add)"/>
+                                <rect key="frame" x="368" y="20" width="30" height="30"/>
+                                <state key="normal" title="Add"/>
                                 <connections>
-                                    <segue destination="I2I-qO-Tha" kind="show" id="LBt-cb-wpQ"/>
+                                    <action selector="addClicked:" destination="s8q-Xl-8o2" eventType="touchUpInside" id="wTE-fb-SlD"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -743,6 +743,7 @@
                     </view>
                     <connections>
                         <outlet property="table" destination="b8C-MK-gbb" id="jCE-mX-62M"/>
+                        <segue destination="I2I-qO-Tha" kind="show" identifier="addDictrionary" id="Ruv-mU-3r4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qex-tP-eVG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -751,9 +752,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="PEp-xx-c3K"/>
         <segue reference="pgQ-zb-5ti"/>
-        <segue reference="LBt-cb-wpQ"/>
+        <segue reference="pQb-SA-07o"/>
+        <segue reference="fm4-vH-TJD"/>
         <segue reference="Ibp-It-g9k"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class DictionaryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -27,17 +29,24 @@ class DictionaryViewController: UIViewController, UITableViewDataSource, UITable
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        self.meaningToUse = meanings[indexPath.row]
+    }
+    
     
     var front = ""
     var category = ""
     var uid = ""
     var meanings: [String] = []
+    var meaningToUse = ""
+    var ref: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        ref = Database.database().reference()
         table.dataSource = self
+        table.delegate = self
         table.estimatedRowHeight = 100
         table.rowHeight = UITableViewAutomaticDimension
 
@@ -94,7 +103,16 @@ class DictionaryViewController: UIViewController, UITableViewDataSource, UITable
             }
         }).resume()
     }
-
+    
+    @IBAction func addClicked(_ sender: Any) {
+        if meaningToUse.isEmpty{
+            Util.showAlert(self, "please select a definition")
+        } else {
+            self.ref.child("users").child(self.uid).child(self.category).child(self.front).setValue(self.meaningToUse)
+            performSegue(withIdentifier: "addDictrionary", sender: self)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -103,6 +121,10 @@ class DictionaryViewController: UIViewController, UITableViewDataSource, UITable
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "dictToFront" {
             let destination = segue.destination as! AddFrontViewController
+            destination.uid = self.uid
+            destination.category = self.category
+        } else if segue.identifier == "addDictrionary" {
+            let destination = segue.destination as! CardsListViewController
             destination.uid = self.uid
             destination.category = self.category
         }

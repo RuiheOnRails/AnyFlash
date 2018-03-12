@@ -18,7 +18,7 @@ class Util {
     }
     
     static func showAlert(_ view: UIViewController, _ msg: String){
-        let alert = UIAlertController(title: "Sign Up Error", message: msg, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Error", message: msg, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         view.present(alert, animated: true)
     }
