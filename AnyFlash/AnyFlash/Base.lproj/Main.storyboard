@@ -150,8 +150,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter a category for your flash cards below" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VN-4T-dgX">
-                                <rect key="frame" x="-31" y="174" width="382" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter a category for your flash cards below" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VN-4T-dgX">
+                                <rect key="frame" x="0.0" y="174" width="320" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -181,6 +181,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="7VN-4T-dgX" firstAttribute="width" secondItem="u9Y-cs-goM" secondAttribute="width" id="3UX-zA-CED"/>
                             <constraint firstItem="KIv-wf-Jil" firstAttribute="top" secondItem="BrY-ux-qI2" secondAttribute="top" constant="30" id="Hdh-RE-8df"/>
                             <constraint firstItem="Sw8-Oh-SUc" firstAttribute="top" secondItem="AmO-cR-srg" secondAttribute="bottom" constant="40" id="I3I-ZD-s2J"/>
                             <constraint firstItem="Sw8-Oh-SUc" firstAttribute="centerX" secondItem="LF1-NT-sfQ" secondAttribute="centerX" id="IeE-ym-cCJ"/>
@@ -971,7 +972,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="pQb-SA-07o"/>
         <segue reference="Ocz-a0-jk1"/>
-        <segue reference="ehd-2p-M6u"/>
+        <segue reference="348-vS-2q7"/>
         <segue reference="JRZ-0s-3s4"/>
     </inferredMetricsTieBreakers>
 </document>
