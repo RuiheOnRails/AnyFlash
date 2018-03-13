@@ -696,7 +696,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's on the front side of your card?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fip-2n-05p">
-                                <rect key="frame" x="-17" y="130" width="354" height="27"/>
+                                <rect key="frame" x="0.0" y="130" width="320" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -758,6 +758,7 @@
                             <constraint firstItem="wpb-mh-NGW" firstAttribute="centerX" secondItem="nXC-Fd-Mgi" secondAttribute="centerX" id="15R-qG-x8c"/>
                             <constraint firstItem="JpT-aw-78e" firstAttribute="top" secondItem="nXC-Fd-Mgi" secondAttribute="top" constant="30" id="1py-s6-ocg"/>
                             <constraint firstItem="84N-gW-v41" firstAttribute="bottom" secondItem="Ceg-Sl-eBS" secondAttribute="bottom" id="2ag-RQ-Yxd"/>
+                            <constraint firstItem="fip-2n-05p" firstAttribute="width" secondItem="84N-gW-v41" secondAttribute="width" id="3GM-vc-TVL"/>
                             <constraint firstItem="fip-2n-05p" firstAttribute="centerX" secondItem="nXC-Fd-Mgi" secondAttribute="centerX" id="F0U-7L-lSw"/>
                             <constraint firstItem="84N-gW-v41" firstAttribute="leading" secondItem="Ceg-Sl-eBS" secondAttribute="leading" id="IsR-0o-1ND"/>
                             <constraint firstItem="NCc-wV-f6f" firstAttribute="top" secondItem="wpb-mh-NGW" secondAttribute="bottom" constant="50" id="PQN-f7-qeq"/>
@@ -828,7 +829,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's on the back side of your card?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eo0-3d-55q">
-                                <rect key="frame" x="-18" y="137" width="356" height="26.5"/>
+                                <rect key="frame" x="0.0" y="137" width="320" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -846,6 +847,7 @@
                             <constraint firstItem="koJ-5o-pfY" firstAttribute="leading" secondItem="v5e-3q-ufP" secondAttribute="leading" id="32z-qw-LuW"/>
                             <constraint firstItem="vwS-kh-2EJ" firstAttribute="centerY" secondItem="sqL-GC-ohI" secondAttribute="centerY" id="6ZO-T5-QOC"/>
                             <constraint firstItem="M1t-at-MX3" firstAttribute="centerX" secondItem="yuI-AS-tiq" secondAttribute="centerX" id="EI5-Tq-1IM"/>
+                            <constraint firstItem="eo0-3d-55q" firstAttribute="width" secondItem="koJ-5o-pfY" secondAttribute="width" id="GHd-19-w6V"/>
                             <constraint firstItem="LKL-EA-JIK" firstAttribute="top" secondItem="yuI-AS-tiq" secondAttribute="top" constant="30" id="L8s-ZE-IK6"/>
                             <constraint firstItem="sqL-GC-ohI" firstAttribute="centerX" secondItem="yuI-AS-tiq" secondAttribute="centerX" id="M5w-2r-oz5"/>
                             <constraint firstItem="koJ-5o-pfY" firstAttribute="top" secondItem="yuI-AS-tiq" secondAttribute="top" id="MIl-eT-L6f"/>
@@ -970,8 +972,8 @@
         <image name="grey" width="1024" height="841"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pQb-SA-07o"/>
-        <segue reference="Ocz-a0-jk1"/>
+        <segue reference="AV9-Yy-ckS"/>
+        <segue reference="8RX-dz-Vbe"/>
         <segue reference="348-vS-2q7"/>
         <segue reference="JRZ-0s-3s4"/>
     </inferredMetricsTieBreakers>
