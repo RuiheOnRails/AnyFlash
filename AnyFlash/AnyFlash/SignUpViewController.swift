@@ -12,7 +12,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate{
     
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -27,7 +27,18 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
         ref = Database.database().reference()
+        
+        
+        self.emailTextField.delegate = self
+        self.confirmTextField.delegate = self
+        self.passwordTextField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 
     override func didReceiveMemoryWarning() {

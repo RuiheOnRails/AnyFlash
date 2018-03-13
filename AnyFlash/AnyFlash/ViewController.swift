@@ -11,7 +11,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
     var handle: AuthStateDidChangeListenerHandle?
     var uid = ""
@@ -23,9 +23,16 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.passwordBox.delegate = self
+        self.emailBox.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
         ref = Database.database().reference()
         //        self.ref.child("test4").setValue(["thisComesFromApp": "valueHere!"])
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     override func viewWillAppear(_ animated: Bool) {

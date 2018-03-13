@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class AddCatViewController: UIViewController {
+class AddCatViewController: UIViewController, UITextFieldDelegate {
     
     var uid = ""
     var ref: DatabaseReference!
@@ -19,7 +19,13 @@ class AddCatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.textField.delegate = self
         ref = Database.database().reference()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 
     override func didReceiveMemoryWarning() {

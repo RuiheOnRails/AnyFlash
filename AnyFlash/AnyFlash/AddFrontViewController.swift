@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class AddFrontViewController: UIViewController {
+class AddFrontViewController: UIViewController, UITextFieldDelegate {
     
     var uid = ""
     var front = ""
@@ -19,8 +19,15 @@ class AddFrontViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.testFiled.delegate = self
 
         // Do any additional setup after loading the view.
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 
     override func didReceiveMemoryWarning() {

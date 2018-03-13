@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class AddBackViewController: UIViewController {
+class AddBackViewController: UIViewController, UITextFieldDelegate {
     
     var uid = ""
     var front = ""
@@ -21,8 +21,14 @@ class AddBackViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.textField.delegate = self
         // Do any additional setup after loading the view.
         ref = Database.database().reference()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 
     override func didReceiveMemoryWarning() {
